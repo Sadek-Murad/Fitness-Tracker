@@ -11,21 +11,16 @@ const mongoose = require("mongoose");
 // Authentifizierungsrouten
 router.post('/register', async (req, res) => {
     try {
-
         const existingUser = await RegisterUser.findOne({ email: req.body.email });
         if (existingUser) {
-            return res.status(400).send('Benutzer existiert bereits mit dieser E-Mail.');
+            return res.status(412).send({ "msg": "Email already exists." });
         }
-
-
         const newUser = new RegisterUser(req.body);
         await newUser.save();
-
-
         res.status(200).send({ Benutzer: newUser });
     } catch (error) {
-        console.error("Fehler bei der Registierung: ", error);
-        res.status(500).send({ Meldung: "Fehler beim Registrieren" });
+        console.error("Register failed: ", error);
+        res.status(500).send({ "msg": "Register failed" });
     }
 });
 

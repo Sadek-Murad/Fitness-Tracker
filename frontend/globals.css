@@ -2,3 +2,14 @@ body {
     width: 800px;
     margin: 0 auto;
 }
+
+.error {
+    display: none;
+    background-color: red;
+    height: 100px;
+    width: 100%;
+}
+
+.show {
+    display: block;
+}
