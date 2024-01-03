@@ -1,6 +1,6 @@
 function login() {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+  const email = document.getElementById('email')
+  const password = document.getElementById('password')
   // console.log('email', password.value)
 
   const options = {
@@ -8,10 +8,10 @@ function login() {
       headers: {
           "Content-Type": "application/json",
       },
-      body: JSON.stringify({ "email": email, "password": password, })
+      body: JSON.stringify({"email": email.value, "password": password.value, })
   }
   fetch("http://localhost:3000/api/login", options)
       .then(response => {
-          console.log("Response: ", response);
+          console.log("Response:", response);
   })
 }
