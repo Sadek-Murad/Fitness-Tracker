@@ -11,18 +11,18 @@ const mongoose = require("mongoose");
 // Authentifizierungsrouten
 router.post('/register', async (req, res) => {
     try {
-        
+
         const existingUser = await RegisterUser.findOne({ email: req.body.email });
         if (existingUser) {
             return res.status(400).send('Benutzer existiert bereits mit dieser E-Mail.');
         }
 
-        
+
         const newUser = new RegisterUser(req.body);
         await newUser.save();
 
 
-        res.status(200).send({ Benutzer: newUser});
+        res.status(200).send({ Benutzer: newUser });
     } catch (error) {
         console.error("Fehler bei der Registierung: ", error);
         res.status(500).send({ Meldung: "Fehler beim Registrieren" });
@@ -30,7 +30,7 @@ router.post('/register', async (req, res) => {
 });
 
 
-   
+
 
 
 
@@ -73,7 +73,7 @@ router.post('/register', async (req, res) => {
  */
 
 
-module.exports=router;
+module.exports = router;
 
 
 

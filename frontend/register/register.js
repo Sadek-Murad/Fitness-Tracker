@@ -18,5 +18,5 @@ function register() {
     fetch("http://localhost:3000/api/register", options)
         .then(response => {
             console.log("Response: ", response);
-    })
+        })
 }
