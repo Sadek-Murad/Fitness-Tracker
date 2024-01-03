@@ -15,7 +15,7 @@ function register() {
         },
         body: JSON.stringify({ "firstname": firstname.value, "lastname": lastname.value, "age": age.value, "gender": gender.value, "height": height.value, "weight": weight.value, "email": email.value, })
     }
-    fetch(localhost, options)
+    fetch("http://localhost:3000/api/register", options)
         .then(response => {
             console.log("Response: ", response);
     })
