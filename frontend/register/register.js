@@ -24,9 +24,8 @@ function register() {
             } else {
                 errorDiv.classList.toggle("show")
                 res.text().then(text => {
-                    text.json().then(msg => {
-                        errorMsg.innerHTML = msg.msg
-                    })
+                    let errMsg = JSON.parse(text);
+                    errorMsg.innerHTML = errMsg.msg;
                 })
             }
         })
