@@ -26,7 +26,18 @@ router.post('/register', async (req, res) => {
 });
 
 
-
+/ Authentifizierungsrouten
+//Login
+router.post('/register', async (req, res) => {
+    try {
+        const existingUser = await RegisterUser.findOne({ email: req.body.email });
+        if (existingUser) {
+            return res.status(412).send({ "msg": "Email already used." });
+        }
+        if (!existingUser) {
+        return res.status(401).send('Wrong password')
+        }
+        if 
 
 
 
