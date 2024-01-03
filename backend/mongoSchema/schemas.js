@@ -17,6 +17,36 @@ const UserProfileSchema = new mongoose.Schema({
     email: String,
 })
 
+const Workout = mongoose.model('Workout', workoutSchema);
+const UserProfile = mongoose.model('UserProfile', UserProfileSchema);
 
 
-module.exports = {workoutSchema};
+const workouts = [
+    { title: 'Morning Yoga', description: 'A relaxing start to your day', image: 'yoga.jpg' },
+    { title: 'Cardio Blast', description: 'High intensity cardio', image: 'cardio.jpg' }
+];
+
+
+
+// Funktion zum Einfügen der Daten
+/* async function insertSampleData() {
+    try {
+        // Workout-Daten einfügen
+        for (let workout of workouts) {
+            const newWorkout = new Workout(workout);
+            await newWorkout.save();
+        }
+        console.log('Workout data inserted');
+
+    } catch (err) {
+        console.error('Error inserting sample data:', err);
+    } finally {
+        mongoose.disconnect();
+    }
+}
+       
+
+insertSampleData(); */
+
+
+module.exports = {Workout, UserProfile};
