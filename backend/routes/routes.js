@@ -9,6 +9,7 @@ const mongoose = require("mongoose");
 
 
 // Authentifizierungsrouten
+//Register
 router.post('/register', async (req, res) => {
     try {
         const existingUser = await RegisterUser.findOne({ email: req.body.email });
@@ -23,7 +24,6 @@ router.post('/register', async (req, res) => {
         res.status(500).send({ "msg": "Register failed" });
     }
 });
-
 
 
 
