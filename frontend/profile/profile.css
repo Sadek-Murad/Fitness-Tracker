@@ -1,2 +1,11 @@
 .profile-container {
+margin-top: 250px;
+text-align: left;
 }
+
+img {
+  float: left;
+  margin: auto
+}
+
+
