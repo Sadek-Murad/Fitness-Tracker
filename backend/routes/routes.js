@@ -1,12 +1,7 @@
 const express = require("express")
 const router = express.Router();
-const { Workout, RegisterUser } = require("../mongoSchema/schemas");
+const { Workout, WorkoutExercise, RegisterUser } = require("../mongoSchema/schemas");
 const mongoose = require("mongoose");
-
-
-
-
-
 
 // Authentifizierungsrouten
 router.post('/register', async (req, res) => {
@@ -18,15 +13,34 @@ router.post('/register', async (req, res) => {
         const newUser = new RegisterUser(req.body);
         await newUser.save();
         res.status(200).send({ Benutzer: newUser });
+
     } catch (error) {
         console.error("Register failed: ", error);
         res.status(500).send({ "msg": "Register failed" });
     }
 });
 
-
-
-
+/* router.post('/workout', (req, res) => {
+    let dbResults = []
+    req.body.exercises.forEach(exercise => {
+        try {
+            const newWorkoutExercise = new WorkoutExercise({
+                name: exercise.name,
+                type: exercise.type,
+                difficulty: exercise.difficulty,
+                muscle: exercise.muscle
+            });
+            dbResults.push(newWorkoutExercise.save());
+        } catch (error) {
+            console.error('Error creating new workout:', error);
+            res.status(400).send({ message: "Error creating new workout" });
+        }
+    });
+    Promise.all(dbResults).then(() => {
+        res.status(201).send({ message: "Exercises saved" });
+    });
+});
+ */
 
 
 

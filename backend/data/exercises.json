@@ -1,0 +1,130 @@
+{
+  "exercises": [
+    {
+      "name": "Running",
+      "type": "Cardio",
+      "difficulty": "Moderate",
+      "muscle": "Full Body"
+    },
+    {
+      "name": "Push-ups",
+      "type": "Strength",
+      "difficulty": "Easy",
+      "muscle": "Chest, Shoulders, Triceps"
+    },
+    {
+      "name": "Cycling",
+      "type": "Cardio",
+      "difficulty": "Moderate",
+      "muscle": "Legs, Cardiovascular"
+    },
+    {
+      "name": "Yoga",
+      "type": "Flexibility",
+      "difficulty": "Easy",
+      "muscle": "Full Body, Flexibility"
+    },
+    {
+      "name": "Swimming",
+      "type": "Cardio",
+      "difficulty": "Intermediate",
+      "muscle": "Full Body, Cardiovascular"
+    },
+    {
+      "name": "Jumping Jacks",
+      "type": "Cardio",
+      "difficulty": "Easy",
+      "muscle": "Full Body"
+    },
+    {
+      "name": "Squats",
+      "type": "Strength",
+      "difficulty": "Moderate",
+      "muscle": "Legs, Glutes"
+    },
+    {
+      "name": "Rowing",
+      "type": "Cardio",
+      "difficulty": "Intermediate",
+      "muscle": "Back, Arms, Cardiovascular"
+    },
+    {
+      "name": "Plank",
+      "type": "Core",
+      "difficulty": "Intermediate",
+      "muscle": "Core"
+    },
+    {
+      "name": "Tennis",
+      "type": "Cardio",
+      "difficulty": "Moderate",
+      "muscle": "Arms, Legs, Cardiovascular"
+    },
+    {
+      "name": "Sit-ups",
+      "type": "Core",
+      "difficulty": "Easy",
+      "muscle": "Core"
+    },
+    {
+      "name": "Jump Rope",
+      "type": "Cardio",
+      "difficulty": "Easy",
+      "muscle": "Full Body"
+    },
+    {
+      "name": "Weightlifting",
+      "type": "Strength",
+      "difficulty": "Intermediate",
+      "muscle": "Varies (Depends on the Exercise)"
+    },
+    {
+      "name": "Pilates",
+      "type": "Flexibility",
+      "difficulty": "Easy",
+      "muscle": "Core, Flexibility"
+    },
+    {
+      "name": "Basketball",
+      "type": "Cardio",
+      "difficulty": "Moderate",
+      "muscle": "Legs, Arms, Cardiovascular"
+    },
+    {
+      "name": "Burpees",
+      "type": "Cardio",
+      "difficulty": "Intermediate",
+      "muscle": "Full Body"
+    },
+    {
+      "name": "Mountain Climbers",
+      "type": "Cardio",
+      "difficulty": "Intermediate",
+      "muscle": "Full Body, Cardiovascular"
+    },
+    {
+      "name": "Deadlifts",
+      "type": "Strength",
+      "difficulty": "Intermediate",
+      "muscle": "Back, Legs, Glutes"
+    },
+    {
+      "name": "Climbing Stairs",
+      "type": "Cardio",
+      "difficulty": "Easy",
+      "muscle": "Legs, Cardiovascular"
+    },
+    {
+      "name": "Martial Arts",
+      "type": "Cardio",
+      "difficulty": "Intermediate",
+      "muscle": "Full Body"
+    },
+    {
+      "name": "Hiking",
+      "type": "Cardio",
+      "difficulty": "Moderate",
+      "muscle": "Legs, Cardiovascular"
+    }
+  ]
+}
