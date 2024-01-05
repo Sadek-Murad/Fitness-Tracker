@@ -21,3 +21,5 @@ fetch("http://localhost:3000/api/profile/6596921b8cb903d3edf57f1c")
   document.getElementById('email').innerHTML = userData.email;
   })
   .catch(error => console.error(error));localStorage
+
+  

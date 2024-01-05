@@ -1,5 +1,6 @@
 function login() {
     const email = document.getElementById('email')
+    const password = document.getElementById('password')
     const errorMsg = document.getElementById('error-msg')
     const errorDiv = document.getElementById('error-div')
   // console.log('email', password.value)
@@ -9,7 +10,7 @@ function login() {
       headers: {
           "Content-Type": "application/json",
       },
-      body: JSON.stringify({"email": email.value, })
+      body: JSON.stringify({"email": email.value, "password": password, })
   }
   fetch("http://localhost:3000/api/login", options)
   .then(res => {
