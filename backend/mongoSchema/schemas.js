@@ -5,11 +5,14 @@ const userSchema = new mongoose.Schema({
     firstname: String,
     lastname: String,
     email: String,
-    password: String,
     age: Number,
     gender: String,
     height: Number,
     weight: Number,
+    profileImage: String,
+    BMI: Number,
+    isNewUser: {type: Boolean, default: true}
+   
 })
 
 // userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
@@ -18,14 +21,14 @@ const userSchema = new mongoose.Schema({
 const RegisterUser = mongoose.model("User", userSchema)
 
 
-const workoutSchema = new mongoose.Schema({
-    id: { type: mongoose.Schema.Types.ObjectId },
-    title: String,
-    description: String,
-    image: String
+const exercises = new mongoose.Schema({
+    name: String,
+    type: String,
+    difficulty: String,
+    muscle: String
 })
 
-const Workout = mongoose.model('Workout', workoutSchema);
+const WorkoutExercise = mongoose.model('exercises', exercises);
 
 
 /* const userProfileSchema = new mongoose.Schema({
@@ -45,7 +48,7 @@ const UserProfile = mongoose.model('UserProfile', userProfileSchema); */
 
 
 
-module.exports = { Workout, RegisterUser };
+module.exports = { WorkoutExercise, RegisterUser };
 
 
 /* const workouts = [
