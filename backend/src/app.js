@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const routes = require('../routes/routes.js');
 require('dotenv').config();
 const passport = require('../Auth/auth.js')
-const session = require(express.session)
+const session = require('express-session');
 
 
 
@@ -12,7 +12,7 @@ const session = require(express.session)
 const app = express();
 
 app.use(session({
-    secret: "1234",
+    secret: process.env.key,
     resave: false,
     saveUninitialized: true,
 }))
