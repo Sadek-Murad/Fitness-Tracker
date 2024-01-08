@@ -3,10 +3,23 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const routes = require('../routes/routes.js');
 require('dotenv').config();
+const passport = require('../Auth/auth.js')
+const session = require('express-session');
+
 
 
 
 const app = express();
+
+app.use(session({
+    secret: process.env.key,
+    resave: false,
+    saveUninitialized: true,
+}))
+
+// Initialisierung von Passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // CORS (Cross Origin Ressource Sharing) aktivieren
 const cors = require('cors');
