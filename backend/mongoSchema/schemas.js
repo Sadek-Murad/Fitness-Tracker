@@ -31,21 +31,6 @@ const exercises = new mongoose.Schema({
 const WorkoutExercise = mongoose.model('exercises', exercises);
 
 
-/* const userProfileSchema = new mongoose.Schema({
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'RegisterUser' },
-    firstname: String,
-    lastname: String,
-    age: Number,
-    gender: String,
-    height: Number,
-    weight: Number,
-    email: String,
-}) */
-
-/* 
-const UserProfile = mongoose.model('UserProfile', userProfileSchema); */
-
-
 
 
 module.exports = { WorkoutExercise, RegisterUser };
@@ -78,3 +63,17 @@ module.exports = { WorkoutExercise, RegisterUser };
 
 insertSampleData(); */
 
+
+/* const userProfileSchema = new mongoose.Schema({
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'RegisterUser' },
+    firstname: String,
+    lastname: String,
+    age: Number,
+    gender: String,
+    height: Number,
+    weight: Number,
+    email: String,
+}) */
+
+/* 
+const UserProfile = mongoose.model('UserProfile', userProfileSchema); */
