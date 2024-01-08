@@ -20,7 +20,16 @@ router.post('/register', async (req, res) => {
     }
 });
 
-/* router.post('/workout', (req, res) => {
+router.get('/exercises', async (req, res) => {
+    try {
+        const exercises = await WorkoutExercise.find();
+        res.status(200).send(exercises);
+    } catch (error) {
+        res.status(500).send({ "msg": "Fehler beim Abrufen der Übungen", error: error });
+    }
+});
+
+router.post('/workout', (req, res) => {
     let dbResults = []
     req.body.exercises.forEach(exercise => {
         try {
@@ -40,7 +49,7 @@ router.post('/register', async (req, res) => {
         res.status(201).send({ message: "Exercises saved" });
     });
 });
- */
+
 
 
 
