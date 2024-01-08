@@ -3,8 +3,9 @@ const router = express.Router();
 const { RegisterUser, WorkoutExercise } = require("../mongoSchema/schemas");
 const mongoose = require("mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const passport = require('passport');
+const passport = require('../Auth/auth');
 const session = require('express-session');
+
 
 
 
@@ -15,10 +16,10 @@ router.get('/auth/google', passport.authenticate('google'));
 
 router.get('/auth/google/callback', 
     passport.authenticate('google', { failureRedirect: '/login' }), 
-    async (req, res) => {
+    (req, res) => {
         try {
             if (req.user.isNewUser) {  
-                res.redirect('/additional-info');
+                res.redirect('/http://localhost:3000/additional-info');
             } else {
                 res.redirect(`/profile/${req.user._id}`);
             }
@@ -31,19 +32,26 @@ router.get('/auth/google/callback',
 
 router.post('/additional-info', async (req, res) => {
     try {
-        await RegisterUser.findByIdAndUpdate(req.user._id, {
+        const updatedUser = await RegisterUser.findByIdAndUpdate(req.user._id, {
             age: req.body.age,
             gender: req.body.gender,
             height: req.body.height,
-            weight: req.body.weight
-        });
-        res.redirect('/profile');
+            weight: req.body.weight,
+            isNewUser: false
+        }, { new: true });
+        req.user = updatedUser;
+        res.redirect(`/profile/${req.user._id}`);
     } catch (error) {
         console.error('Error updating user information:', error);
         res.redirect('/error');
     }
 });
 
+
+router.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/home');
+});
 
 
 
@@ -84,7 +92,21 @@ router.patch('/profile/:id',async (req, res) =>{
 
 
 
+
+
+
+
+
+
 module.exports = router;
+
+
+
+
+
+
+
+
 
 // GET-Route für das Abrufen aller Übungen
 /* router.get('/exercises', async (req, res) => {

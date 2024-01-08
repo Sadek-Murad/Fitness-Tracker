@@ -4,7 +4,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const { RegisterUser } = require('../mongoSchema/schemas');
 require('dotenv').config();
 const session = require('express-session');
-
+const { deserialize } = require('v8');
 
 
 
@@ -14,26 +14,49 @@ passport.use(new GoogleStrategy({
     callbackURL: "http://localhost:3000/api/auth/google/callback",
     scope: ['profile', 'email']
 }, async (accessToken, refreshToken, profile, done) => {
-    // Abruf von Nutzerdaten, einschließlich Vor- und Nachname
-    const existingUser = await RegisterUser.findOne({ googleId: profile.id });
-    if (existingUser) {
-        // Nutzer existiert bereits, Weiterleitung oder Update der Daten
-        done(null, existingUser);
-    } else {
-        // Neuer Nutzer, Speichern der Daten inklusive Profilbild und Namen
-        const newUser = new RegisterUser({
-            googleId: profile.id,
-            email: profile.emails[0].value,
-            firstname: profile.name.givenName, // Vorname
-            lastname: profile.name.familyName, // Nachname
-            profileImage: profile.photos[0].value, // URL des Profilbilds
-            isNewUser: true
-        });
-        await newUser.save();
-        done(null, newUser);
+    try {
+        let user = await RegisterUser.findOne({ googleId: profile.id });
+        if (!user) {
+            
+            user = await RegisterUser.findOne({ email: profile.emails[0].value });
+            if (user) {
+                
+                user.googleId = profile.id;
+                await user.save();
+            } else {
+                // Erstellen eines neuen Benutzers
+                user = new RegisterUser({
+                    googleId: profile.id,
+                    email: profile.emails[0].value,
+                    firstname: profile.name.givenName,
+                    lastname: profile.name.familyName,
+                    profileImage: profile.photos[0].value,
+                    isNewUser: true
+                });
+                await user.save();
+            }
+        }
+        done(null, user);
+    } catch (error) {
+        done(error, null);
     }
 }));
 
-// ... (Serialisierung und Deserialisierung)
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+    try {
+        const user = await RegisterUser.findById(id);
+        done(null, user);
+    } catch (error) {
+        done(error, null);
+    }
+});
+
+
+
 module.exports = passport;
+
 
