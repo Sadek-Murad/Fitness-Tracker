@@ -1,0 +1,96 @@
+
+
+/* Foto */
+.container {
+  position: center;
+  width: 800px;
+  height: 800px;
+  background-image: url(image/people.png);
+  margin: 50 auto;
+  margin-top: 170px;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
+}
+
+/* Overlay */
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+/* Google-Logo */
+.container img {
+  width: 150px;
+  height: 100px;
+  top: 40%;
+  left: 66%;
+  position: relative;
+}
+
+/* Sign in */
+.container h2 {
+  color: white;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  font-size: 45px;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Subline Use a Google account */
+.container p {
+  color: white;
+  text-align: center;
+  position: absolute;
+  top: 58%;
+  left: 25%;
+  font-size: 20px;
+  width: 100%;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+
+/* button */
+.container a {
+  width: 200px;
+  height: 40px;
+  left: 63%;
+  top: 65%;
+  position:absolute;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* subline Entdecke dein neues Fitness-Abenteuer */
+.container h1 {
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  font-size: 45px;
+  font-family: 'Bebas Neue', sans-serif;
+  text-shadow: 5px 5px 10px #000000;
+}
+
+/* Hintergrund */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(to bottom, rgb(21, 36, 56), rgb(7, 11, 19));
+}
