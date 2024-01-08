@@ -1,5 +1,8 @@
 let originalValues = {}; // Hier werden die ursprünglichen Werte gespeichert
 
+// GET Params aus URl holen
+http://localhost:5500/profile.html?id=
+
 fetch("http://localhost:3000/api/profile/6596921b8cb903d3edf57f1c")
   .then(res => {
     if (res.ok) {

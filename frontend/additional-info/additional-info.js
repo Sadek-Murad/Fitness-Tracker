@@ -1,4 +1,5 @@
 function register() {
+    console.log('Register');
     const age = document.getElementById('age')
     const gender = document.getElementById('gender')
     const height = document.getElementById('height')
@@ -14,13 +15,13 @@ function register() {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            "firstname": "age": age.value, "gender": gender.value, "height": height.value, "weight": weight.value
+            "age": age.value, "gender": gender.value, "height": height.value, "weight": weight.value
         })
     }
     fetch("http://localhost:3000/api/additional-info", options)
         .then(res => {
             if (res.ok) {
-                return res.json()
+                console.log(res.json());
             } else {
                 errorDiv.classList.toggle("show")
                 res.text().then(text => {
@@ -30,3 +31,8 @@ function register() {
             }
         })
 }
+
+const button = document.getElementById('send-button');
+button.addEventListener("click", (e) => {
+    register();
+});
