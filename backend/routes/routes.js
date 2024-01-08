@@ -19,7 +19,7 @@ router.get('/auth/google/callback',
     (req, res) => {
         try {
             if (req.user.isNewUser) {  
-                res.redirect('/http://localhost:3000/additional-info');
+                res.redirect('http://localhost:3000/additional-info');
             } else {
                 res.redirect(`/profile/${req.user._id}`);
             }
