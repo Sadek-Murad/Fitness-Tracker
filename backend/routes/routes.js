@@ -185,8 +185,30 @@ module.exports = router;
 }) */
 
 
+// POST Route zum Hinzufügen von Workouts
+/* router.post('/workout', (req, res) => {
+    let dbResults = []
+    req.body.exercises.forEach(exercise => {
+        try {
+            const newWorkoutExercise = new WorkoutExercise({
+                name: exercise.name,
+                type: exercise.type,
+                difficulty: exercise.difficulty,
+                muscle: exercise.muscle
+            });
+            dbResults.push(newWorkoutExercise.save());
+        }
+catch (error) {
+            console.error('Error creating new workout:', error);
+            res.status(400).send({ message: "Error creating new workout" });
+        }
+    });
+    Promise.all(dbResults).then(() => {
+        res.status(201).send({ message: "Exercises saved" });
+    });
+});
 
-
+ */
 
 /* router.get('/workouts', async (req, res) => {
     try {
