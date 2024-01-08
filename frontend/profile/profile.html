@@ -1,39 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap demo</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="profile.css" />
-    <link rel="stylesheet" href="../globals.css">
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap demo</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+    crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="profile.css" />
+</head>
+<body>
+  <div class="background">
+    <div class="formular">
     <h1>Profile</h1>
-    <img id="profileImage" src="image/profil.png" class="rounded mx-auto d-block" alt="Profilbild" />
-    <div class="profile-container">
-      <div id></div>
-      <p>Firstname: <span id="firstname"></span></p>
-      <p>Lastname: <span id="lastname"></span></p>
-      <p>Age: <span id="age"></span></p>
-      <p>Gender: <span id="gender"></span></p>
-      <p>Height: <span id="height"></span></p>
-      <p>Weight: <span id="weight"></span></p>
-      <p>BMI: <span id="bmi"></span></p>
-      <p>E-Mail: <span id="email"></span></p>
-    </div>
-    <button type="submit" class="btn btn-secondary" onclick="edit()">Edit</button>
-  
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
-    <script src="profile.js"></script>
-  </body>
-</html>
+    <img id="profileImage" src="image/profil.png" class="rounded mx-auto d-block" alt="Profilbild" />  
+    <p>Firstname: <span id="firstname"></span></p>
+    <p>Lastname: <span id="lastname"></span></p>
+    <!-- Hier wird initial nur der Text angezeigt -->
+    <p>Age: <span id="ageText"></span><input id="age" type="text" style="display: none;"></p>
+    <p>Gender: <span id="genderText"></span><input id="gender" type="text" style="display: none;"></p>
+    <p>Height: <span id="heightText"></span><input id="height" type="text" style="display: none;"></p>
+    <p>Weight: <span id="weightText"></span><input id="weight" type="text" style="display: none;"></p>
+    <p>BMI: <span id="bmiText"></span><input id="bmi" type="text" style="display: none;"></p>
+    <p>E-Mail: <span id="email"></span></p>
+    <button type="button" class="btn btn-primary" onclick="edit()">Edit</button>
+    <button type="button" class="btn btn-primary" onclick="save()">Save</button>
+  </div>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="profile.js"></script>
+</body>
+</html
