@@ -36,15 +36,24 @@ router.post('/additional-info', async (req, res) => {
             age: req.body.age,
             gender: req.body.gender,
             height: req.body.height,
-            weight: req.body.weight
-        });
+            weight: req.body.weight,
+            isNewUser: false
+        }, { new: true }); 
 
         res.status(301).redirect(`http://localhost:5500/frontend/profile/profile.html?id=${req.body.id}`);
     } catch (error) {
         console.error('Error updating user information:', error);
-        // res.redirect('/error');
+        res.status(500).send('Server Error'); 
     }
 });
+
+
+router.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/home');
+});
+
+
 
 
 // Profilrouten
@@ -81,6 +90,17 @@ router.patch('/profile/:id', async (req, res) => {
 
     }
 })
+
+
+// GET-Route für das Abrufen aller Übungen
+router.get('/exercises', async (req, res) => {
+    try {
+        const exercises = await WorkoutExercise.find();
+        res.status(200).send(exercises);
+    } catch (error) {
+        res.status(500).send({ "msg": "Fehler beim Abrufen der Übungen", error: error });
+    }
+});
 
 
 
@@ -161,11 +181,6 @@ module.exports = router;
 
 
 
-router.get('/logout', (req, res) => {
-    req.logout();
-    res.redirect('/home');
-});
-
 
 
 // Profilrouten
@@ -204,15 +219,7 @@ router.get('/logout', (req, res) => {
 // })
 
 
-// GET-Route für das Abrufen aller Übungen
-router.get('/exercises', async (req, res) => {
-    try {
-        const exercises = await WorkoutExercise.find();
-        res.status(200).send(exercises);
-    } catch (error) {
-        res.status(500).send({ "msg": "Fehler beim Abrufen der Übungen", error: error });
-    }
-});
+
 
 
 
@@ -230,7 +237,7 @@ router.get('/exercises', async (req, res) => {
 
 
 
-module.exports = router;
+
 
 
 
