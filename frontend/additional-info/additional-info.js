@@ -1,5 +1,8 @@
 function register() {
     console.log('Register');
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const id = urlParams.get('id');
     const age = document.getElementById('age')
     const gender = document.getElementById('gender')
     const height = document.getElementById('height')
@@ -15,13 +18,14 @@ function register() {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            "age": age.value, "gender": gender.value, "height": height.value, "weight": weight.value
+            "id": id, "age": age.value, "gender": gender.value, "height": height.value, "weight": weight.value
         })
     }
     fetch("http://localhost:3000/api/additional-info", options)
         .then(res => {
+            console.log("RESPONSE", res);
             if (res.ok) {
-                console.log(res.json());
+                console.log(res.url);
             } else {
                 errorDiv.classList.toggle("show")
                 res.text().then(text => {
@@ -34,5 +38,6 @@ function register() {
 
 const button = document.getElementById('send-button');
 button.addEventListener("click", (e) => {
+    e.preventDefault();
     register();
 });

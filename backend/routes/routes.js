@@ -19,7 +19,7 @@ router.get('/auth/google/callback',
     async (req, res) => {
         try {
             if (req.user.isNewUser) {
-                res.redirect('http://localhost:5500/frontend/additional-info/additional-info.html');
+                res.redirect('http://localhost:5500/frontend/additional-info/additional-info.html?id=' + req.user._id);
             } else {
                 res.redirect(`/profile/${req.user._id}`);
             }
@@ -32,13 +32,14 @@ router.get('/auth/google/callback',
 
 router.post('/additional-info', async (req, res) => {
     try {
-        await RegisterUser.findByIdAndUpdate(req.user._id, {
+        await RegisterUser.findByIdAndUpdate(req.body.id, {
             age: req.body.age,
             gender: req.body.gender,
             height: req.body.height,
             weight: req.body.weight
         });
-        res.redirect(`http://localhost:5500/frontend/profile/profile.html?id=${req.user._id}`);
+
+        res.status(301).redirect(`http://localhost:5500/frontend/profile/profile.html?id=${req.body.id}`);
     } catch (error) {
         console.error('Error updating user information:', error);
         // res.redirect('/error');
