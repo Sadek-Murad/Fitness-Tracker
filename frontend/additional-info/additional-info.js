@@ -26,6 +26,7 @@ function register() {
             console.log("RESPONSE", res);
             if (res.ok) {
                 console.log(res.url);
+                window.location.assign(res.url);
             } else {
                 errorDiv.classList.toggle("show")
                 res.text().then(text => {

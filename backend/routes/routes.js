@@ -21,7 +21,7 @@ router.get('/auth/google/callback',
             if (req.user.isNewUser) {
                 res.redirect('http://localhost:5500/frontend/additional-info/additional-info.html?id=' + req.user._id);
             } else {
-                res.redirect(`/profile/${req.user._id}`);
+                res.redirect('http://localhost:5500/frontend/profile/profile.html?id=' + req.user._id);
             }
         } catch (error) {
             console.error('Error in authentication process:', error);
@@ -38,12 +38,12 @@ router.post('/additional-info', async (req, res) => {
             height: req.body.height,
             weight: req.body.weight,
             isNewUser: false
-        }, { new: true }); 
-
-        res.status(301).redirect(`http://localhost:5500/frontend/profile/profile.html?id=${req.body.id}`);
+        }, { new: true });
+        // res.status(200).send({ "id": req.body.id });
+        res.redirect(301, `http://localhost:5500/frontend/profile/profile.html?id=${req.body.id}`);
     } catch (error) {
         console.error('Error updating user information:', error);
-        res.status(500).send('Server Error'); 
+        res.status(500).send('Server Error');
     }
 });
 
@@ -133,7 +133,7 @@ module.exports = router;
         res.status(400).send({ message: "Error creating new workout" });
     }
 });
- 
+
 
  */
 

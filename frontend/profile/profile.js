@@ -1,32 +1,35 @@
 let originalValues = {}; // Hier werden die ursprünglichen Werte gespeichert
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const id = urlParams.get('id');
 
-// GET Params aus URl holen
-http://localhost:5500/profile.html?id=
-
-fetch("http://localhost:3000/api/profile/6596921b8cb903d3edf57f1c")
+fetch("http://localhost:3000/api/profile/" + id)
   .then(res => {
     if (res.ok) {
+
       return res.json();
     } else {
-        console.error('Fehler beim Laden der Daten:', res.status);
+      console.error('Fehler beim Laden der Daten:', res.status);
     }
   })
   .then(userData => {
     originalValues = userData;
+    console.log(originalValues);
     displayUserData(userData);
   })
   .catch(error => console.error(error));
 
 function displayUserData(userData) {
   // Anzeige der Benutzerdaten auf der Seite
-  document.getElementById('firstname').innerHTML = userData.firstname;
-  document.getElementById('lastname').innerHTML = userData.lastname;
-  document.getElementById('ageText').innerHTML = userData.age;
-  document.getElementById('genderText').innerHTML = userData.gender;
-  document.getElementById('heightText').innerHTML = userData.height;
-  document.getElementById('weightText').innerHTML = userData.weight;
-  document.getElementById('bmiText').innerHTML = userData.bmi;
-  document.getElementById('email').innerHTML = userData.email;
+  document.getElementById('profileImage').src = originalValues.profileImage;
+  document.getElementById('firstname').innerHTML = originalValues.firstname;
+  document.getElementById('lastname').innerHTML = originalValues.lastname;
+  document.getElementById('ageText').innerHTML = originalValues.age;
+  document.getElementById('genderText').innerHTML = originalValues.gender;
+  document.getElementById('heightText').innerHTML = originalValues.height;
+  document.getElementById('weightText').innerHTML = originalValues.weight;
+  document.getElementById('bmiText').innerHTML = originalValues.bmi;
+  document.getElementById('email').innerHTML = originalValues.email;
 }
 
 function setDisplayFields(displayStyle) {
@@ -66,15 +69,15 @@ function save() {
     },
     body: JSON.stringify(updatedData)
   })
-  .then(response => {
-    if (response.ok) {
-      console.log('Daten erfolgreich aktualisiert');
-      window.location.href = window.location.href;
-    } else {
-      console.error('Fehler beim Aktualisieren der Daten');
-    }
-  })
-  .catch(error => {
-    console.error('Fetch-Fehler:', error);
-  });
+    .then(response => {
+      if (response.ok) {
+        console.log('Daten erfolgreich aktualisiert');
+        window.location.href = window.location.href;
+      } else {
+        console.error('Fehler beim Aktualisieren der Daten');
+      }
+    })
+    .catch(error => {
+      console.error('Fetch-Fehler:', error);
+    });
 }
