@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const passport = require('../Auth/auth');
 const session = require('express-session');
+const path = require("path")
 
 
 
@@ -19,7 +20,7 @@ router.get('/auth/google/callback',
     (req, res) => {
         try {
             if (req.user.isNewUser) {  
-                res.redirect('/http://localhost:3000/additional-info');
+                res.redirect('http://localhost:3000/api/additional-info');
             } else {
                 res.redirect(`/profile/${req.user._id}`);
             }
@@ -30,7 +31,14 @@ router.get('/auth/google/callback',
     }
 );
 
+router.get('/additional-info', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../frontend/login/test.html'));
+    console.log("req", req);
+  
+});
+
 router.post('/additional-info', async (req, res) => {
+    console.log(req.body);
     try {
         const updatedUser = await RegisterUser.findByIdAndUpdate(req.user._id, {
             age: req.body.age,
@@ -46,6 +54,7 @@ router.post('/additional-info', async (req, res) => {
         res.redirect('/error');
     }
 });
+
 
 
 router.get('/logout', (req, res) => {
@@ -91,9 +100,28 @@ router.patch('/profile/:id',async (req, res) =>{
 })
 
 
+ // GET-Route für das Abrufen aller Übungen
+/ router.get('/exercises', async (req, res) => {
+    try {
+        const exercises = await WorkoutExercise.find();
+        res.status(200).send(exercises);
+    } catch (error) {
+        res.status(500).send({ "msg": "Fehler beim Abrufen der Übungen", error: error });
+    }
+});
 
 
 
+
+//Trainingsprogramm-Routen
+router.get('/exercises', async (req, res) => {
+    try {
+        const exercises = await WorkoutExercise.find();
+        res.status(200).send(exercises);
+    } catch (error) {
+        res.status(500).send({ "msg": "Errors when practicing the exercises", error: error });
+    }
+});
 
 
 
@@ -104,19 +132,6 @@ module.exports = router;
 
 
 
-
-
-
-
-// GET-Route für das Abrufen aller Übungen
-/* router.get('/exercises', async (req, res) => {
-    try {
-        const exercises = await WorkoutExercise.find();
-        res.status(200).send(exercises);
-    } catch (error) {
-        res.status(500).send({ "msg": "Fehler beim Abrufen der Übungen", error: error });
-    }
-}); */
 
 
 // POST Route zum Hinzufügen von Workouts
@@ -185,7 +200,7 @@ module.exports = router;
 }) */
 
 
-// POST Route zum Hinzufügen von Workouts
+// POST Route zum Hinzufügen von Workouts // todo! 
 /* router.post('/workout', (req, res) => {
     let dbResults = []
     req.body.exercises.forEach(exercise => {
