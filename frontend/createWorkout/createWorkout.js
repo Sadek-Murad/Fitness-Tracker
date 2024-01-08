@@ -58,27 +58,36 @@ function createWorkout() {
     // console.log('exercise', exercise[0]._id)
 
     let elements = document.getElementsByClassName('list-group-item');
-    console.log('elements', elements);
 
-    for (element of elements) {
+    Array.from(elements).forEach(element => {
         let checkbox = element.getElementsByClassName("btn-check");
         let id = checkbox.id;
-        let reps = element.querySelector('#reps-count' + id);
-
+        // console.log("element", element);
+        let reps = element.querySelector('input[type="number"]');
+        // let reps = element.getElementById('reps-count' + id);
+        // let reps = element.querySelector('#reps-count' + id);
+        // console.log('reps value', reps.value);
         if (reps && reps.value) {
-            console.log('reps', reps.value);
+            console.log('reps.value', reps.value, reps.id);
         }
-        else {
-            console.log("geht nicht");
-        }
+    });
 
-        /*   if (typeof (reps.value)) {
-          } */
+    // for (element of elements) {
+
+    //     if (reps && reps.value) {
+    //         console.log('reps', reps.value);
+    //     }
+    //     else {
+    //         console.log("geht nicht");
+    //     }
+
+    //     /*   if (typeof (reps.value)) {
+    //       } */
 
 
-        // let count = element.getElementById("reps-count" + exercise._id);
+    //     // let count = element.getElementById("reps-count" + exercise._id);
 
-    }
+    // }
 
 
 }
