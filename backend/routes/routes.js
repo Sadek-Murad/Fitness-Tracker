@@ -48,7 +48,7 @@ router.post('/additional-info', async (req, res) => {
 
 router.get('/logout', (req, res) => {
     req.logout();
-    res.redirect('/home');
+    res.redirect('/login');
 });
 
 
@@ -100,7 +100,29 @@ router.get('/exercises', async (req, res) => {
     }
 });
 
+router.post('/workout', async(req, res) =>{
+    const userId = req.body._id
+    try {
+        const workouts = req.body.workouts
+        if(!Array.isArray(workouts)){
+            return res.send(400).send({'Msg': 'Input must be an array'});
+        }
+        for (const workoutData of workouts) {
+            const neuWorkout = new individualWorkout({
+                userId: userId, 
+                exerciseId: workoutData.exerciseId,
+                sets: workoutData.sets
+            })
+            await neuWorkout.save();
+        }
 
+        res.status(200).send({'Msg': 'Workout successfuly saved'});
+    } catch (error) {
+        console.error('Error saving workouts', error)
+        res.status(500).send
+    }
+         
+})
 
 
 
