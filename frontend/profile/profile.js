@@ -27,4 +27,44 @@ fetch("http://localhost:3000/api/profile/" + id)
   })
   .catch(error => console.error(error));localStorage
 
+  function edit() {
+    setDisplayFields('inline-block');
   
+    displayUserData(originalValues);
+  
+    document.querySelector('button[onclick="edit()"]').style.display = 'none';
+    document.querySelector('button[onclick="save()"]').style.display = 'inline-block';
+  }
+  
+  function save() {
+    setDisplayFields('none');
+    document.querySelector('button[onclick="edit()"]').style.display = 'inline-block';
+    document.querySelector('button[onclick="save()"]').style.display = 'none';
+  
+    const updatedData = {
+      age: document.getElementById('age').value,
+      gender: document.getElementById('gender').value,
+      height: document.getElementById('height').value,
+      weight: document.getElementById('weight').value,
+      bmi: document.getElementById('bmi').value
+    };
+  
+    fetch('http://localhost:3000/api/profile/6596921b8cb903d3edf57f1c', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedData)
+    })
+      .then(response => {
+        if (response.ok) {
+          console.log('Daten erfolgreich aktualisiert');
+          window.location.href = window.location.href;
+        } else {
+          console.error('Fehler beim Aktualisieren der Daten');
+        }
+      })
+      .catch(error => {
+        console.error('Fetch-Fehler:', error);
+      });
+  }
