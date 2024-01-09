@@ -43,7 +43,8 @@ const port = 3000;
 
 
 //Verbindung zur Datenbank
-mongoose.connect(`mongodb://localhost:27017/Fitness-Tracker`, {
+// mongoose.connect(`mongodb://localhost:27017/Fitness-Tracker`, {
+mongoose.connect(`mongodb+srv://ft-db:oToWm1tPUDYZDpga@fitty-tracker.ucnz3cm.mongodb.net/?retryWrites=true&w=majority`, {
 }).then(() => console.log("connected to MongoDB"))
     .catch((e) => console.error("Failed to connect to MongoDB" + e));
 
