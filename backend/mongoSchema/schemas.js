@@ -28,16 +28,20 @@ const exercises = new mongoose.Schema({
     muscle: String
 })
 
-const WorkoutExercise = mongoose.model('exercises', exercises);
+const exercise = mongoose.model('exercises', exercises); 
 
-const exercisesSchema = new mongoose.Schema({
-    name: String,
-    type: String,
-    difficulty: String,
-    muscle: String
-})
+const individualWorkoutSchema = new mongoose.Schema({
+    userId: { type: mongoose.Schema.Types.ObjectId, ref:RegisterUser },
+    exerciseId: String,
+    sets: Number,
+}, { timestamps: true } ) 
 
-const WorkoutExercise = mongoose.model('exercises', exercisesSchema);
+const individualWorkout  = mongoose.model('individualWorkout', individualWorkoutSchema); 
+
+
+
+module.exports = { individualWorkout, RegisterUser, exercise };
+
 
 /* const userProfileSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'RegisterUser' },
@@ -53,7 +57,7 @@ const WorkoutExercise = mongoose.model('exercises', exercisesSchema);
 /* 
 const UserProfile = mongoose.model('UserProfile', userProfileSchema); */
 
-module.exports = { WorkoutExercise, RegisterUser };
+
 
 /* const workouts = [
     { title: 'Morning Yoga', description: 'A relaxing start to your day', image: 'yoga.jpg' },
