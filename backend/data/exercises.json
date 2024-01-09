@@ -1,0 +1,238 @@
+{
+  "exercises": [
+    {
+      "name": "Push-ups",
+      "type": "Bodyweight",
+      "difficulty": "Medium",
+      "muscle": "Chest"
+    },
+    {
+      "name": "Squats",
+      "type": "Bodyweight",
+      "difficulty": "Easy",
+      "muscle": "Legs"
+    },
+    {
+      "name": "Bench press",
+      "type": "Weightlifting",
+      "difficulty": "Hard",
+      "muscle": "Chest"
+    },
+    {
+      "name": "Pull-ups",
+      "type": "Bodyweight",
+      "difficulty": "Hard",
+      "muscle": "Back"
+    },
+    {
+      "name": "Plank",
+      "type": "Bodyweight",
+      "difficulty": "Medium",
+      "muscle": "Core"
+    },
+    {
+      "name": "Lunges",
+      "type": "Bodyweight",
+      "difficulty": "Easy",
+      "muscle": "Legs"
+    },
+    {
+      "name": "Deadlift",
+      "type": "Weightlifting",
+      "difficulty": "Hard",
+      "muscle": "Back"
+    },
+    {
+      "name": "Bicep curl",
+      "type": "Weightlifting",
+      "difficulty": "Easy",
+      "muscle": "Arms"
+    },
+    {
+      "name": "Tricep extension",
+      "type": "Weightlifting",
+      "difficulty": "Easy",
+      "muscle": "Arms"
+    },
+    {
+      "name": "Shoulder press",
+      "type": "Weightlifting",
+      "difficulty": "Medium",
+      "muscle": "Shoulders"
+    },
+    {
+      "name": "Lateral raise",
+      "type": "Weightlifting",
+      "difficulty": "Easy",
+      "muscle": "Shoulders"
+    },
+    {
+      "name": "Crunches",
+      "type": "Bodyweight",
+      "difficulty": "Easy",
+      "muscle": "Core"
+    },
+    {
+      "name": "Leg raise",
+      "type": "Bodyweight",
+      "difficulty": "Medium",
+      "muscle": "Core"
+    },
+    {
+      "name": "Russian twist",
+      "type": "Bodyweight",
+      "difficulty": "Medium",
+      "muscle": "Core"
+    },
+    {
+      "name": "Mountain climbers",
+      "type": "Bodyweight",
+      "difficulty": "Hard",
+      "muscle": "Core"
+    },
+    {
+      "name": "Burpees",
+      "type": "Bodyweight",
+      "difficulty": "Hard",
+      "muscle": "Full body"
+    },
+    {
+      "name": "Jumping jacks",
+      "type": "Bodyweight",
+      "difficulty": "Easy",
+      "muscle": "Full body"
+    },
+    {
+      "name": "Skipping rope",
+      "type": "Cardio",
+      "difficulty": "Medium",
+      "muscle": "Full body"
+    },
+    {
+      "name": "Running",
+      "type": "Cardio",
+      "difficulty": "Medium",
+      "muscle": "Full body"
+    },
+    {
+      "name": "Cycling",
+      "type": "Cardio",
+      "difficulty": "Medium",
+      "muscle": "Legs"
+    },
+    {
+      "name": "Swimming",
+      "type": "Cardio",
+      "difficulty": "Hard",
+      "muscle": "Full body"
+    },
+    {
+      "name": "Boxing",
+      "type": "Cardio",
+      "difficulty": "Hard",
+      "muscle": "Full body"
+    },
+    {
+      "name": "Rowing",
+      "type": "Cardio",
+      "difficulty": "Hard",
+      "muscle": "Full body"
+    },
+    {
+      "name": "Dumbbell fly",
+      "type": "Weightlifting",
+      "difficulty": "Medium",
+      "muscle": "Chest"
+    },
+    {
+      "name": "Dumbbell row",
+      "type": "Weightlifting",
+      "difficulty": "Medium",
+      "muscle": "Back"
+    },
+    {
+      "name": "Dumbbell squat",
+      "type": "Weightlifting",
+      "difficulty": "Medium",
+      "muscle": "Legs"
+    },
+    {
+      "name": "Dumbbell lunge",
+      "type": "Weightlifting",
+      "difficulty": "Medium",
+      "muscle": "Legs"
+    },
+    {
+      "name": "Dumbbell hammer curl",
+      "type": "Weightlifting",
+      "difficulty": "Easy",
+      "muscle": "Arms"
+    },
+    {
+      "name": "Dumbbell skull crusher",
+      "type": "Weightlifting",
+      "difficulty": "Easy",
+      "muscle": "Arms"
+    },
+    {
+      "name": "Dumbbell front raise",
+      "type": "Weightlifting",
+      "difficulty": "Easy",
+      "muscle": "Shoulders"
+    },
+    {
+      "name": "Dumbbell rear delt fly",
+      "type": "Weightlifting",
+      "difficulty": "Medium",
+      "muscle": "Shoulders"
+    },
+    {
+      "name": "Kettlebell swing",
+      "type": "Weightlifting",
+      "difficulty": "Hard",
+      "muscle": "Full body"
+    },
+    {
+      "name": "Kettlebell snatch",
+      "type": "Weightlifting",
+      "difficulty": "Hard",
+      "muscle": "Full body"
+    },
+    {
+      "name": "Kettlebell clean and press",
+      "type": "Weightlifting",
+      "difficulty": "Hard",
+      "muscle": "Full body"
+    },
+    {
+      "name": "Kettlebell goblet squat",
+      "type": "Weightlifting",
+      "difficulty": "Medium",
+      "muscle": "Legs"
+    },
+    {
+      "name": "Kettlebell Turkish get-up",
+      "type": "Weightlifting",
+      "difficulty": "Hard",
+      "muscle": "Full body"
+    },
+    {
+      "name": "Kettlebell windmill",
+      "type": "Weightlifting",
+      "difficulty": "Hard",
+      "muscle": "Core"
+    },
+    {
+      "name": "Kettlebell halo",
+      "type": "Weightlifting",
+      "difficulty": "Medium",
+      "muscle": "Shoulders"
+    },
+    {
+      "name": "Kettlebell figure 8",
+      "type": "Weightlifting",
+      "difficulty": "Medium",
+      "muscle": "Core"
+    }
+  ]
+}
