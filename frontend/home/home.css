@@ -1,19 +1,15 @@
-
 body {
   margin: 0;
   padding: 0;
 }
 
-
 .header {
   position: relative;
-  background-image: url('image/home.png');
+  background-image: url("image/home.png");
   background-size: cover;
   background-position: center;
   height: 800px;
 }
-
-
 
 .navbar {
   position: absolute;
@@ -31,7 +27,6 @@ body {
   margin: 0 10px;
 }
 
-
 .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -39,7 +34,7 @@ body {
 }
 
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   width: calc(33.33% - 40px);
   margin: 20px;
@@ -49,7 +44,6 @@ body {
   padding: 2px 16px;
 }
 
-
 @media screen and (max-width: 768px) {
   .card {
     width: calc(100% - 30px);
@@ -58,5 +52,5 @@ body {
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }

@@ -16,10 +16,12 @@
 <!-- Navi -->
   <div class="header">
     <div class="navbar">
-      <a href="#">Home</a>
-      <a href="#">Über uns</a>
-      <a href="#">Dienstleistungen</a>
-      <a href="#">Kontakt</a>
+      <a href="/">Home</a>
+      <a href="/frontend/createWorkout/createWorkout.html">Create</a>
+      <a href="/frontend/trackWorkout/trackWorkout.html">Track</a>
+     
+      <a href="/frontend/statistic/statistic.html">Statistic</a>
+      <button onclick="logout()">logout</button>
     </div>
   </div>
 
@@ -28,8 +30,8 @@
   <div class="card">
     <img src="image/image01.png" alt="Bild01" style="width:100%">
     <div class="container-card">
-      <h4><b>John Doe</b></h4>
-      <p>Architect & Engineer</p>
+      <h4><b>Boris & Svitlana</b></h4>
+      <p>Personal Trainer</p>
     </div>
   </div>
 
@@ -37,16 +39,16 @@
     <div class="card">
       <img src="image/image02.png" alt="Bild02" style="width:100%">
       <div class="container-card">
-        <h4><b>John Doe</b></h4>
-        <p>Architect & Engineer</p>
+        <h4><b>Benedict & Nicole</b></h4>
+        <p>Personal Trainer</p>
       </div>
     </div>
           <!-- card 3 -->
           <div class="card">
             <img src="image/image03.png" alt="Bild03" style="width:100%">
             <div class="container-card">
-              <h4><b>John Doe</b></h4>
-              <p>Architect & Engineer</p>
+              <h4><b>Sadek & Simone</b></h4>
+              <p>Personal Trainer</p>
             </div>
           </div>  
     </div> 
@@ -56,5 +58,7 @@
     <a href="http://localhost:3000/api/auth/google/callback" class="btn btn-danger"><span class="fa fa-google"></span> SignIn with Google</a>
     
   </div>
+  <script src="../globals.css"></script>
+  <script type="module" src="home.js"></script>
 </body>
 </html>
