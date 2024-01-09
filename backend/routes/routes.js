@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router();
-const { Workout, WorkoutExercise, RegisterUser } = require("../mongoSchema/schemas");
+const { Workout, individualWorkout, WorkoutExercise, RegisterUser } = require("../mongoSchema/schemas");
 const mongoose = require("mongoose");
 
 // Authentifizierungsrouten
@@ -29,7 +29,7 @@ router.get('/exercises', async (req, res) => {
     }
 });
 
-router.post('/workout', (req, res) => {
+/* router.post('/exercises', (req, res) => {
     let dbResults = []
     req.body.exercises.forEach(exercise => {
         try {
@@ -40,6 +40,25 @@ router.post('/workout', (req, res) => {
                 muscle: exercise.muscle
             });
             dbResults.push(newWorkoutExercise.save());
+        } catch (error) {
+            console.error('Error creating new workout:', error);
+            res.status(400).send({ message: "Error creating new workout" });
+        }
+    });
+    Promise.all(dbResults).then(() => {
+        res.status(201).send({ message: "Exercises saved" });
+    });
+}); */
+
+router.post('/workout', (req, res) => {
+    let dbResults = []
+    req.body.individualWorkout.forEach(exercise => {
+        try {
+            const newIndividualWorkout = new individualWorkout({
+                exerciseId: exercise.exerciseId,
+                sets: exercise.sets
+            });
+            dbResults.push(newIndividualWorkout.save());
         } catch (error) {
             console.error('Error creating new workout:', error);
             res.status(400).send({ message: "Error creating new workout" });
