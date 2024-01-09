@@ -17,10 +17,10 @@ passport.use(new GoogleStrategy({
     try {
         let user = await RegisterUser.findOne({ googleId: profile.id });
         if (!user) {
-            
+
             user = await RegisterUser.findOne({ email: profile.emails[0].value });
             if (user) {
-                
+
                 user.googleId = profile.id;
                 await user.save();
             } else {

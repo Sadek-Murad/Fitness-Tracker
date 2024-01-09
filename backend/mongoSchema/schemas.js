@@ -30,11 +30,30 @@ const exercises = new mongoose.Schema({
 
 const WorkoutExercise = mongoose.model('exercises', exercises);
 
+const exercisesSchema = new mongoose.Schema({
+    name: String,
+    type: String,
+    difficulty: String,
+    muscle: String
+})
 
+const WorkoutExercise = mongoose.model('exercises', exercisesSchema);
 
+/* const userProfileSchema = new mongoose.Schema({
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'RegisterUser' },
+    firstname: String,
+    lastname: String,
+    age: Number,
+    gender: String,
+    height: Number,
+    weight: Number,
+    email: String,
+}) */
+
+/* 
+const UserProfile = mongoose.model('UserProfile', userProfileSchema); */
 
 module.exports = { WorkoutExercise, RegisterUser };
-
 
 /* const workouts = [
     { title: 'Morning Yoga', description: 'A relaxing start to your day', image: 'yoga.jpg' },

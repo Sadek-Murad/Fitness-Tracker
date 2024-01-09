@@ -1,13 +1,13 @@
 const express = require("express")
 const router = express.Router();
+
 const { RegisterUser, WorkoutExercise } = require("../mongoSchema/schemas");
+
 const mongoose = require("mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const passport = require('../Auth/auth');
 const session = require('express-session');
 const path = require("path")
-
-
 
 // Authentifizierungsrouten
 //Google Authentifizierung starten
@@ -136,8 +136,6 @@ module.exports = router;
 
 
  */
-
-
 
 // Authentifizierungsrouten
 //Google Authentifizierung starten
@@ -280,12 +278,41 @@ module.exports = router;
         const newUser = new RegisterUser(req.body);
         await newUser.save();
         res.status(200).send({ Benutzer: newUser });
+
     } catch (error) {
         console.error("Register failed: ", error);
         res.status(500).send({ "msg": "Register failed" });
     }
-}); */
 
+router.get('/exercises', async (req, res) => {
+    try {
+        const exercises = await WorkoutExercise.find();
+        res.status(200).send(exercises);
+    } catch (error) {
+        res.status(500).send({ "msg": "Fehler beim Abrufen der Übungen", error: error });
+    }
+});
+
+/* router.post('/exercises', (req, res) => {
+    let dbResults = []
+    req.body.exercises.forEach(exercise => {
+        try {
+            const newWorkoutExercise = new WorkoutExercise({
+                name: exercise.name,
+                type: exercise.type,
+                difficulty: exercise.difficulty,
+                muscle: exercise.muscle
+            });
+            dbResults.push(newWorkoutExercise.save());
+        } catch (error) {
+            console.error('Error creating new workout:', error);
+            res.status(400).send({ message: "Error creating new workout" });
+        }
+    });
+    Promise.all(dbResults).then(() => {
+        res.status(201).send({ message: "Exercises saved" });
+    });
+}); */
 
 // Authentifizierungsrouten
 //Login
