@@ -11,8 +11,8 @@ const userSchema = new mongoose.Schema({
     weight: Number,
     profileImage: String,
     BMI: Number,
-    isNewUser: {type: Boolean, default: true}
-   
+    isNewUser: { type: Boolean, default: true }
+
 })
 
 // userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });

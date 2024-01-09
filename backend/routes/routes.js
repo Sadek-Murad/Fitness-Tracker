@@ -280,6 +280,7 @@ module.exports = router;
         const newUser = new RegisterUser(req.body);
         await newUser.save();
         res.status(200).send({ Benutzer: newUser });
+
     } catch (error) {
         console.error("Register failed: ", error);
         res.status(500).send({ "msg": "Register failed" });
