@@ -5,11 +5,14 @@ const userSchema = new mongoose.Schema({
     firstname: String,
     lastname: String,
     email: String,
-    password: String,
     age: Number,
     gender: String,
     height: Number,
     weight: Number,
+    profileImage: String,
+    BMI: Number,
+    isNewUser: {type: Boolean, default: true}
+   
 })
 
 // userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
@@ -18,24 +21,14 @@ const userSchema = new mongoose.Schema({
 const RegisterUser = mongoose.model("User", userSchema)
 
 
-const workoutSchema = new mongoose.Schema({
-    id: { type: mongoose.Schema.Types.ObjectId },
-    title: String,
-    description: String,
-    image: String
+const exercises = new mongoose.Schema({
+    name: String,
+    type: String,
+    difficulty: String,
+    muscle: String
 })
 
-const Workout = mongoose.model('Workout', workoutSchema);
-
-
-const individualWorkoutSchema = new mongoose.Schema({
-    id: { type: mongoose.Schema.Types.ObjectId },
-    exerciseId: String,
-    sets: Number,
-}, { timestamps: true })
-
-const individualWorkout = mongoose.model('individualWorkout', individualWorkoutSchema);
-
+const WorkoutExercise = mongoose.model('exercises', exercises);
 
 const exercisesSchema = new mongoose.Schema({
     name: String,
@@ -60,11 +53,7 @@ const WorkoutExercise = mongoose.model('exercises', exercisesSchema);
 /* 
 const UserProfile = mongoose.model('UserProfile', userProfileSchema); */
 
-
-
-
-module.exports = { Workout, individualWorkout, WorkoutExercise, RegisterUser };
-
+module.exports = { WorkoutExercise, RegisterUser };
 
 /* const workouts = [
     { title: 'Morning Yoga', description: 'A relaxing start to your day', image: 'yoga.jpg' },
@@ -94,3 +83,16 @@ module.exports = { Workout, individualWorkout, WorkoutExercise, RegisterUser };
 insertSampleData(); */
 
 
+/* const userProfileSchema = new mongoose.Schema({
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'RegisterUser' },
+    firstname: String,
+    lastname: String,
+    age: Number,
+    gender: String,
+    height: Number,
+    weight: Number,
+    email: String,
+}) */
+
+/* 
+const UserProfile = mongoose.model('UserProfile', userProfileSchema); */

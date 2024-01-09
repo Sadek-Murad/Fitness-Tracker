@@ -1,0 +1,80 @@
+.background {
+margin-top: 250px;
+text-align: left;
+position: relative;
+width: 800px;
+height: 800px;
+margin: 0 auto;
+margin-top: 80px;
+filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
+}
+
+.formular h1 {
+  position: absolute;
+  top: -15%;
+  color: #fff;
+}
+
+.formular p {
+  color: #fff;
+  font-size: 15px;
+  top: 80%;
+  left: 0%;
+  position: relative;
+}
+
+.formular {
+  max-width: 360px;
+  max-height: 750px;
+  top: 25%;
+  left: 20%;
+  position: relative;
+}
+
+.formular img {
+  top: 25%;
+  left: -20%;
+  position: relative;
+  
+}
+
+/* Button */
+button {
+  color: white;
+  text-align: center;
+  position: absolute;
+  top: 120%;
+  left: 16%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 50px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #00365a;
+}
+
+/* Overlay */
+.background::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  width: 70%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Hintergrund */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(to bottom, rgb(21, 36, 56), rgb(7, 11, 19));
+}
