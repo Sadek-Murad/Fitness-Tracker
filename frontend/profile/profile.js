@@ -33,7 +33,7 @@ function displayUserData(userData) {
 }
 
 function setDisplayFields(displayStyle) {
-  const editableFields = ['age', 'gender', 'height', 'weight', 'bmi'];
+  const editableFields = ['age', 'gender', 'height', 'weight'];
   editableFields.forEach(field => {
     document.getElementById(`${field}Text`).style.display = displayStyle === 'none' ? 'inline-block' : 'none';
     document.getElementById(field).style.display = displayStyle;

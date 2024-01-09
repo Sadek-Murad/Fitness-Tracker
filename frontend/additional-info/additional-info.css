@@ -32,7 +32,7 @@ form {
 /* Eingabefelder */
 label,
 input {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 input[type="age"],
@@ -50,7 +50,7 @@ input[type="submit"] {
   padding: 10px 0;
   font-size: 16px;
   background-color: #3498db;
-  color: #fff;
+  color: #000000;
   border: none;
   border-radius: 20px;
   cursor: pointer;

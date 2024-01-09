@@ -12,13 +12,49 @@
   <link rel="stylesheet" href="home.css">
 </head>
 <body>
-  <div class="container">
-    <img src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg" alt="Google Logo">
-    <h1>Entdecke dein neues <br>Fitness-Abenteuer!</h1>
-    <h2>Sign in</h2>
-    <p>Use a Google account</p>
-    <a href="http://localhost:3000/api/auth/google/callback" class="btn btn-danger"><span class="fa fa-google"></span> SignIn with Google</a>
+
+<!-- Navi -->
+  <div class="header">
+    <div class="navbar">
+      <a href="#">Home</a>
+      <a href="#">Über uns</a>
+      <a href="#">Dienstleistungen</a>
+      <a href="#">Kontakt</a>
+    </div>
   </div>
 
+  <div class="card-container">
+  <!-- card 1 -->
+  <div class="card">
+    <img src="image/image01.png" alt="Bild01" style="width:100%">
+    <div class="container-card">
+      <h4><b>John Doe</b></h4>
+      <p>Architect & Engineer</p>
+    </div>
+  </div>
+
+    <!-- card 2 -->
+    <div class="card">
+      <img src="image/image02.png" alt="Bild02" style="width:100%">
+      <div class="container-card">
+        <h4><b>John Doe</b></h4>
+        <p>Architect & Engineer</p>
+      </div>
+    </div>
+          <!-- card 3 -->
+          <div class="card">
+            <img src="image/image03.png" alt="Bild03" style="width:100%">
+            <div class="container-card">
+              <h4><b>John Doe</b></h4>
+              <p>Architect & Engineer</p>
+            </div>
+          </div>  
+    </div> 
+
+
+  <img src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg" alt="Google Logo">
+    <a href="http://localhost:3000/api/auth/google/callback" class="btn btn-danger"><span class="fa fa-google"></span> SignIn with Google</a>
+    
+  </div>
 </body>
 </html>
