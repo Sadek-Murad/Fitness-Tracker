@@ -38,8 +38,6 @@ const individualWorkoutSchema = new mongoose.Schema({
 
 const individualWorkout = mongoose.model('individualWorkout', individualWorkoutSchema);
 
-
-
 module.exports = { individualWorkout, RegisterUser, exercise };
 
 /* const userProfileSchema = new mongoose.Schema({
