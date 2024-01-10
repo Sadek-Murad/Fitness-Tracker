@@ -13,12 +13,9 @@
     z-index: -1;
     background: #ffffff !important;
   }
+
   .header {
-    max-height: 500px !important;
-    width: 100% !important;
-    background-image: url('image/mobil_home.png') !important;
-    height: 800px;
-    z-index: 999;
+    background-image: none !important;
   }
 
   .btn-primary {
@@ -40,17 +37,26 @@
 }
 
 
+/* ______ oben media______ */
+
+
 .header {
   max-width: 1500px;
   width: 95%;
   margin: 90px auto 0;
-  margin-top: 2%;
   position: relative;
   background-image: url('image/home.png');
   background-size: cover;
-  background-position: center;
-  height: 800px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 500px;
   z-index: 999;
+  top: -10px;
+}
+
+.header h1 {
+  font-size: 45px;
+  left: 50px;
 }
 
 
@@ -132,6 +138,7 @@ li a.active {
   flex-wrap: wrap;
   justify-content: space-around;
   z-index: 999;
+  margin-top: 10px;
 }
 
 .card button {
