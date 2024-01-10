@@ -31,3 +31,13 @@ li a {
   text-decoration: none;
   line-height: 47px;
 }
+
+li a:hover:not(.active) {
+  color: #fff;
+  background-color: rgb(89, 154, 154)
+}
+
+li a.active {
+  color: white;
+  background-color: rgb(3, 80, 80);
+}

@@ -1,3 +1,10 @@
+@media screen and (max-width: 568px) {
+  .background {
+    background-color: #ffffff00 !important;
+    outline: none !important;
+  }
+}  
+
 .background {
 margin-top: 250px;
 text-align: left;
@@ -13,11 +20,12 @@ filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.376));
 
 h1 {
   font-size: 45px;
+  color: #000000;
 }
 
 .container {
   max-width: 1500px;
-  /* flex: 1; */
+  flex: 1;
 }
 
 /* <!-- Navi --> */
@@ -26,6 +34,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  border: 1px solid #e7e7e7;
   background-color: #e6ebec;
   position: fixed;
   top: 0;
@@ -68,12 +77,12 @@ li a.active {
   position: absolute;
   width: 500px;
   height: 800px;
-  background-image: url(image/profil-background.png);
+  background-color:#ffffffa1;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 25px;
-  outline: 5px solid rgb(0, 36, 36)
+  outline: 1px solid rgba(12, 12, 12, 0.386);
 }
 
 .login-container h1 {
@@ -93,7 +102,7 @@ li a.active {
 form {
   display: flex;
   flex-direction: column;
-  color: #fff
+  color: #000000;
 }
 
 /* Eingabefelder */
@@ -122,6 +131,7 @@ input[type="submit"] {
   border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  border: 1px solid #000000;
 }
 
 /* Button */
