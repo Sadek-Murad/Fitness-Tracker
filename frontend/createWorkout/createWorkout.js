@@ -7,7 +7,6 @@ fetch('http://localhost:3000/api/exercises')
     })
     .then(data => {
         displayData(data);
-        createWorkout(data)
     })
     .catch(error => {
         console.error('Fetch error:', error);
@@ -15,7 +14,7 @@ fetch('http://localhost:3000/api/exercises')
 
 function createExerciseContainer(exercise) {
     let exerciseContainer = document.createElement("div");
-    exerciseContainer.classList.add("d-flex");
+    exerciseContainer.classList.add("d-flex", "justify-content-between");
     exerciseContainer.setAttribute('aria-label', "Basic checkbox toggle button group");
 
     let exerciseName = document.createElement('p');
@@ -44,7 +43,7 @@ function createExerciseContainer(exercise) {
 
     let setsInput = document.createElement('input');
     setsInput.type = "number";
-    setsInput.style = "width: 3em", "margin-left: 1em";
+    setsInput.style = "width: 3em"; "text-align: right";
     setsInput.id = "sets-count" + exercise._id;
 
     let muscleBanner = document.createElement("span");
@@ -82,15 +81,16 @@ function createWorkout() {
             // let muscle = element.querySelector('span').innerText;
 
             exerciseList.push({
+                "userId": "659eac250754d960fdf04831",
                 "exerciseId": id,
                 "sets": sets.value,
             });
 
             console.log('exerciseList', exerciseList)
-            // window.location.href = "../trackWorkout/trackWorkout.html"
+            window.location.href = "../trackWorkout/trackWorkout.html"
         }
     });
-
+    console.log('CCCCCCCC', exerciseList)
     const requestOptions = {
         method: 'POST',
         headers: {
@@ -100,7 +100,7 @@ function createWorkout() {
         body: JSON.stringify(exerciseList),
     };
 
-    fetch("http://127.0.0.1:3000/api/workout", requestOptions)
+    fetch("http://127.0.0.1:3000/api/workout/659eac250754d960fdf04831", requestOptions)
         .then(response => {
             // Check if the response status is OK (200-299)
             if (!response.ok) {
@@ -113,12 +113,12 @@ function createWorkout() {
         .then(data => {
             // Handle the response data
             console.log('POST successful:', data);
+            // window.location.href = "http://127.0.0.1:5500/frontend/trackWorkout/trackWorkout.html?id=659eac250754d960fdf04831"
         })
         .catch(error => {
             // Handle errors
             console.error('POST error:', error);
         });
-
 }
 
 function displayData(data) {
@@ -133,6 +133,7 @@ function displayData(data) {
     submitButton.type = "submit";
     submitButton.innerHTML = "save";
     submitButton.classList.add("btn", "btn-primary")
+    submitButton.style = "width: 100%; margin: 1em auto"
     submitButton.addEventListener('click', createWorkout);
     submitButtonContainer.appendChild(submitButton);
 
