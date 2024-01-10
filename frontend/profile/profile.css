@@ -6,18 +6,18 @@ width: 800px;
 height: 800px;
 margin: 0 auto;
 margin-top: 80px;
-filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
+filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.376));
 }
 
 
 
 h1 {
-  font-size: 25px;
+  font-size: 45px;
 }
 
 .container {
   max-width: 1500px;
-  flex: 1;
+  /* flex: 1; */
 }
 
 /* <!-- Navi --> */
@@ -26,7 +26,6 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  border: 1px solid #e7e7e7;
   background-color: #e6ebec;
   position: fixed;
   top: 0;
@@ -70,15 +69,16 @@ margin-top: 150px;
 }
 
 .formular h1 {
-  top: -15%;
+  margin-top: 2%;
   color: #fff;
-  margin-left: 170px;
+  margin-left: 120px;
 }
 
 .formular p {
   color: #fff;
   font-size: 15px;
   margin-left: 150px;
+  margin-top: 30px;
 }
 
 .formular span {
@@ -88,19 +88,16 @@ margin-top: 150px;
 .formular input[type="text"] {
   padding: 5px;
   border-radius: 5px; /* Ecken der Input-Felder abrunden */
-  border: 1px solid #ccc;
-  position: absolute;
-  top: 90%;
-  left: 200px;
-
+  border: 1px solid #e6ebec;
 }
 
 /* Profilbild */
 .rounded {
 border-radius: 100px !important;
 position: absolute;
-top: 50px;
+top: -80px;
 left: 150px;
+outline: 5px solid rgb(0, 36, 36)
 }
 
 /* Button */
@@ -114,6 +111,7 @@ button {
   height: 50px;
   border-radius: 20px !important;
   border: none !important;
+  outline: 1px solid rgb(201, 255, 255) ;
   background-color: rgb(0, 101, 101) !important;
   cursor: pointer;
 }
@@ -126,17 +124,19 @@ button:hover {
   background-color: rgb(89, 154, 154);
 } */
 
+
 /* Overlay */
 .background {
   content: "";
   position: absolute;
   width: 500px;
   height: 800px;
-  background-color:rgb(206, 206, 206);
+  background-image: url(image/profil-background.png);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 25px;
+  outline: 5px solid rgb(0, 36, 36)
 }
 
 .footer {
