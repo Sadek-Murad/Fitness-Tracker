@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router();
-const { individualWorkout, RegisterUser, exercise} = require("../mongoSchema/schemas");
+const { IndividualWorkout, RegisterUser, Exercise, Statistic } = require("../mongoSchema/schemas");
 const mongoose = require("mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const passport = require('../Auth/auth');
@@ -93,7 +93,7 @@ router.patch('/profile/:id', async (req, res) => {
 // GET-Route für das Abrufen aller Übungen
 router.get('/exercises', async (req, res) => {
     try {
-        const exercises = await WorkoutExercise.find();
+        const exercises = await Exercise.find();
         res.status(200).send(exercises);
     } catch (error) {
         res.status(500).send({ "msg": "Fehler beim Abrufen der Übungen", error: error });
