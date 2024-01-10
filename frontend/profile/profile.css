@@ -1,25 +1,48 @@
+@media screen and (max-width: 568px) {
+  .background .formular h1 {
+    color: #000000 !important;
+  }
+  
+  .background .formular p {
+    color: #000000 !important;
+  }
 
 
-.background {
-margin-top: 250px;
-text-align: left;
-position: relative;
-width: 800px;
-height: 800px;
-margin: 0 auto;
-margin-top: 80px;
-filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.376));
+  .background {
+    outline: none !important;
+    top: 650px !important;
+    height: 80vh !important;
+  }
+
+
+  .color-box {
+    width: 1500px;
+    height: 116vh;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url(image/background_profile.png);
+    z-index: -1;
+    filter: drop-shadow(0 0 2px rgba(71, 71, 71, 0.8));
+  }
+  ul {
+    width: 100% !important;
+    left: 0;
+    transform: none;
+  }
+
+  .footer {
+    width: 100% !important;
+    left: 0;
+    transform: none;
+  }
 }
 
-
-
-h1 {
-  font-size: 45px;
-}
 
 .container {
   max-width: 1500px;
-  /* flex: 1; */
+  flex: 1;
 }
 
 /* <!-- Navi --> */
@@ -28,6 +51,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  border: 1px solid #e7e7e7;
   background-color: #e6ebec;
   position: fixed;
   top: 0;
@@ -72,12 +96,12 @@ margin-top: 150px;
 
 .formular h1 {
   margin-top: 2%;
-  color: #fff;
+  color: #000000;
   margin-left: 120px;
 }
 
 .formular p {
-  color: #fff;
+  color: #000000;
   font-size: 15px;
   margin-left: 150px;
   margin-top: 30px;
@@ -99,7 +123,7 @@ border-radius: 100px !important;
 position: absolute;
 top: -80px;
 left: 150px;
-outline: 5px solid rgb(0, 36, 36)
+outline: 1px solid rgba(12, 12, 12, 0.386)
 }
 
 /* Button */
@@ -129,12 +153,12 @@ button:hover {
   position: absolute;
   width: 500px;
   height: 800px;
-  background-image: url(image/profil-background.png);
+  background-color:#ffffff4f;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 25px;
-  outline: 5px solid rgb(0, 36, 36)
+  outline: 1px solid rgba(12, 12, 12, 0.386)
 }
 
 .footer {
@@ -156,7 +180,7 @@ button:hover {
 
 .color-box {
   width: 1500px;
-  height: 140vh;
+  height: 114vh;
   position: absolute;
   top: 0%;
   left: 50%;

@@ -88,25 +88,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const logoutButton = document.getElementById('logoutButton');
 
   if (logoutButton) {
-    logoutButton.addEventListener('click', async () => {
-      try {
-        const response = await fetch('/logout', {
-          method: 'GET',
-        });
+      logoutButton.addEventListener('click', async () => {
+          try {
+              const response = await fetch('/logout', {
+                  method: 'GET',
+              });
 
-        if (response.ok) {
-          window.location.href = '/home' + id; // Weiterleitung nach dem Logout
-        } else {
-          console.error('Logout fehlgeschlagen.');
-          // Behandle den Fehler, wenn der Logout fehlschlägt
-        }
-      } catch (error) {
-        console.error('Fehler beim Logout:', error);
-        // Handle andere Fehler, die beim Logout auftreten könnten
-      }
-    });
+              if (response.ok) {
+                  window.location.href = '/home'; // Weiterleitung nach dem Logout
+              } else {
+                  console.error('Logout fehlgeschlagen.');
+                  // Behandle den Fehler, wenn der Logout fehlschlägt
+              }
+          } catch (error) {
+              console.error('Fehler beim Logout:', error);
+              // Handle andere Fehler, die beim Logout auftreten könnten
+          }
+      });
   } else {
-    console.error('Das Element logoutButton wurde nicht gefunden.');
+      console.error('Das Element logoutButton wurde nicht gefunden.');
   }
 });
 
@@ -125,10 +125,10 @@ logoutButton.addEventListener('click', async () => {
       window.location.href = '/'
     } else {
       console.error('Logout fehlgeschlagen.');
-
+    
     }
   } catch (error) {
     console.error('Fehler beim Logout:', error);
-
+    
   }
 });
