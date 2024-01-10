@@ -1,5 +1,6 @@
 body {
   width: 90%;
+  min-width: 390px;
   margin: 0 auto;
   padding: 0.5em;
 }

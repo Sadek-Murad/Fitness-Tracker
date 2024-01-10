@@ -9,72 +9,161 @@ margin-top: 80px;
 filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
 }
 
+
+
+h1 {
+  font-size: 25px;
+}
+
+.container {
+  max-width: 1500px;
+  flex: 1;
+}
+
+/* <!-- Navi --> */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e7e7e7;
+  background-color: #e6ebec;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1500px;
+  height: 80px;
+  z-index: 1000;
+}
+
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #666;
+  text-align: center;
+  font-size: 20px;
+  padding: 16px 18px;
+  text-decoration: none;
+  line-height: 47px;
+}
+
+li a:hover:not(.active) {
+  color: #fff;
+  background-color: rgb(89, 154, 154)
+}
+
+li a.active {
+  color: white;
+  background-color: rgb(3, 80, 80);
+}
+
+.formular {
+position: center;
+margin-top: 150px;
+
+}
+
 .formular h1 {
-  position: absolute;
   top: -15%;
   color: #fff;
+  margin-left: 170px;
 }
 
 .formular p {
   color: #fff;
   font-size: 15px;
-  top: 80%;
-  left: 0%;
-  position: relative;
+  margin-left: 150px;
 }
 
-.formular {
-  max-width: 360px;
-  max-height: 750px;
-  top: 25%;
-  left: 20%;
-  position: relative;
+.formular span {
+  font-weight: bold;
 }
 
-.formular img {
-  top: 25%;
-  left: -20%;
-  position: relative;
-  
+.formular input[type="text"] {
+  padding: 5px;
+  border-radius: 5px; /* Ecken der Input-Felder abrunden */
+  border: 1px solid #ccc;
+  position: absolute;
+  top: 90%;
+  left: 200px;
+
+}
+
+/* Profilbild */
+.rounded {
+border-radius: 100px !important;
+position: absolute;
+top: 50px;
+left: 150px;
 }
 
 /* Button */
 button {
-  color: white;
   text-align: center;
   position: absolute;
-  top: 120%;
-  left: 16%;
+  top: 90%;
+  left: 200px;
   transform: translate(-50%, -50%);
   width: 120px;
   height: 50px;
-  border-radius: 15px;
+  border-radius: 20px !important;
+  border: none !important;
+  background-color: rgb(0, 101, 101) !important;
   cursor: pointer;
 }
 
-input[type="submit"]:hover {
-  background-color: #00365a;
+button:hover {
+  background-color: rgb(89, 154, 154) !important;
 }
+
+/* input[type="submit"]:hover {
+  background-color: rgb(89, 154, 154);
+} */
 
 /* Overlay */
-.background::before {
+.background {
   content: "";
   position: absolute;
-  top: 10%;
-  left: 15%;
-  width: 70%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  width: 500px;
+  height: 800px;
+  background-color:rgb(206, 206, 206);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 25px;
 }
 
-/* Hintergrund */
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
+.footer {
+  background-color: #e6ebec;
+  padding: 20px 0;
+  max-width: 1500px;
+  max-height: 1600px;
+  margin: 0 auto;
   width: 100%;
-  height: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  position:fixed
+}
+
+.color-box {
+  width: 1500px;
+  height: 140vh;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-image: url(image/background_profile.png);
   z-index: -1;
-  background: linear-gradient(to bottom, rgb(21, 36, 56), rgb(7, 11, 19));
+  filter: drop-shadow(0 0 2px rgba(71, 71, 71, 0.8));
 }

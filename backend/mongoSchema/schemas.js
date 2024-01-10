@@ -11,24 +11,15 @@ const userSchema = new mongoose.Schema({
     weight: Number,
     profileImage: String,
     BMI: Number,
-    isNewUser: {type: Boolean, default: true}
-   
+    isNewUser: { type: Boolean, default: true }
+
 })
 
 // userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 
 
-const RegisterUser = mongoose.model("User", userSchema)
+const RegisterUser = mongoose.model("RegisterUser", userSchema)
 
-
-const exercises = new mongoose.Schema({
-    name: String,
-    type: String,
-    difficulty: String,
-    muscle: String
-})
-
-const WorkoutExercise = mongoose.model('exercises', exercises);
 
 const exercisesSchema = new mongoose.Schema({
     name: String,
@@ -37,7 +28,31 @@ const exercisesSchema = new mongoose.Schema({
     muscle: String
 })
 
-const WorkoutExercise = mongoose.model('exercises', exercisesSchema);
+const Exercise = mongoose.model('Exercise', exercisesSchema);
+
+const individualWorkoutSchema = new mongoose.Schema({
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'RegisterUser' },
+    exerciseId: String,
+    sets: Number,
+}, { timestamps: true });
+
+const IndividualWorkout = mongoose.model('IndividualWorkout', individualWorkoutSchema);
+
+const statisticSchema = new mongoose.Schema({
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'RegisterUser' },
+    workout: { type: mongoose.Schema.Types.ObjectId, ref: 'Exercise' },
+    performance: [{
+        set: Number,
+        reps: Number,  
+        weight: Number,
+    }],
+    date: { type: Date, default: Date.now }
+});
+
+const Statistic = mongoose.model('Statistic', statisticSchema);
+
+
+module.exports = { IndividualWorkout, RegisterUser, Exercise, Statistic };
 
 /* const userProfileSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'RegisterUser' },
@@ -50,10 +65,10 @@ const WorkoutExercise = mongoose.model('exercises', exercisesSchema);
     email: String,
 }) */
 
-/* 
+/*
 const UserProfile = mongoose.model('UserProfile', userProfileSchema); */
 
-module.exports = { WorkoutExercise, RegisterUser };
+
 
 /* const workouts = [
     { title: 'Morning Yoga', description: 'A relaxing start to your day', image: 'yoga.jpg' },

@@ -10,15 +10,72 @@
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Great+Vibes&family=Handlee&family=Waterfall&display=swap');
   </style>
   <link rel="stylesheet" href="home.css">
+
 </head>
 <body>
-  <div class="container">
-    <img src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg" alt="Google Logo">
-    <h1>Entdecke dein neues <br>Fitness-Abenteuer!</h1>
-    <h2>Sign in</h2>
-    <p>Use a Google account</p>
-    <a href="http://localhost:3000/api/auth/google/callback" class="btn btn-danger"><span class="fa fa-google"></span> SignIn with Google</a>
+
+<!-- Backgroundbild -->
+  <div class="header"></div>
+
+<!-- Navi -->
+<div class="container">
+  <ul>
+    <li id="logoutButton"><a href="#">Logout</a></li>
+    <!-- <li><a class="active" href="/">Home</a></li> -->
+    <li><a href="/frontend/createWorkout/createWorkout.html">Create</a></li>
+    <li><a href="/frontend/profile/profile.html">Profil</a></li>
+    <li><a href="/frontend/trackWorkout/trackWorkout.html">Track</a></li>
+    <li class="button-center">
+      <a href="http://localhost:3000/api/auth/google/callback" class="btn btn-primary">
+        <i class="bi bi-google"></i> Signin
+      </a>
+    </li>
+  </ul>
+
+  <div class="card-container">
+  <!-- card 1 -->
+  <div class="card">
+    <img src="image/image01.png" alt="Bild01" style="width:100%">
+    <div class="container-card">
+      <h4><b>Muskelaufbau in 10 Minuten</b></h4>
+      <p>Bestes Pilates Booty Workout</p>
+      <p><a href="https://www.youtube.com/watch?v=lULmgJ2vUJI" target="_blank"><button>more info</button></a></p>
+    </div>
   </div>
 
+    <!-- card 2 -->
+    <div class="card">
+      <img src="image/image02.png" alt="Bild02" style="width:100%">
+      <div class="container-card">
+        <h4><b>Skigymnastik</b></h4>
+        <p> Für starke Beine & Bauch</p>
+        <p><a href="https://www.youtube.com/watch?v=eIB62_x5Dgk" target="_blank"><button>more info</button></a></p>
+      </div>
+    </div>
+          <!-- card 3 -->
+          <div class="card">
+            <img src="image/image03.png" alt="Bild03" style="width:100%">
+            <div class="container-card">
+              <h4><b>Fitness Total Body Workout</b></h4>
+              <p>Für Anfänger</p>
+              <p><a href="https://www.youtube.com/watch?v=0Ypp1fPMTcc" target="_blank"><button>more info</button></a></p>
+            </div>
+          </div>  
+    </div> 
+      <!-- Footer -->
+      <footer class="footer mt-auto py-3" id="stickyFooter">
+        <div class="container">
+          <span class="text-muted">Contact us</span>
+        </div>
+      </footer>
+      
+<!-- farbbox -->
+    <div class="color-box"></div>
+  </div>
+
+
+  <!-- <img src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg" alt="Google Logo"> -->
+
+  <script src="home.js"></script>
 </body>
 </html>
