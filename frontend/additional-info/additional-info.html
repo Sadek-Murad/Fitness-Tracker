@@ -11,6 +11,14 @@
 </head>
 
 <body>
+<!-- Navi -->
+<ul>
+  <li id="logoutButton"><a href="#">Logout</a></li>
+  <!-- <li><a class="active" href="/">Home</a></li> -->
+  <li><a href="/frontend/createWorkout/createWorkout.html">Create</a></li>
+  <li><a href="/frontend/trackWorkout/trackWorkout.html">Track</a></li>
+  </li>
+</ul>
 
 
   <div id="error-div" class="alert alert-danger collapse" role="alert">
@@ -37,7 +45,9 @@
           <label for="weight" class="form-label">Weight</label>
           <input type="number" class="form-control" id="weight" placeholder="">
         </div>
+        <div class="button-center">
         <button class="btn btn-primary" id="send-button">Senden</button>
+      </div>
     </div>
     </form>
   </div>
