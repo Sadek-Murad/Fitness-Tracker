@@ -1,4 +1,4 @@
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 568px) {
   .color-box {
     display: none;
   }
@@ -16,7 +16,22 @@
 
   .header {
     background-image: none !important;
+    margin-right: 50px !important;
   }
+
+  .header h1 {
+    font-size: 45px !important;
+    left: 60px;
+    top: 30px;
+    color: #000000 !important;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0)) !important;
+  }
+  
+  .header p {
+    color: #000000 !important;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0)) !important;
+  }
+
 
   .btn-primary {
     width: 100px !important;
@@ -55,10 +70,22 @@
 }
 
 .header h1 {
-  font-size: 45px;
-  left: 50px;
+  font-size: 55px;
+  position: absolute;
+  left: 60px;
+  top: 100px;
+  color: #fff;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.8));
 }
 
+.header p {
+  font-size: 25px;
+  position: absolute;
+  left: 60px;
+  top: 250px;
+  color: #fff;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.8));
+}
 
 .container {
   max-width: 1500px;
@@ -215,7 +242,7 @@ li a.active {
 
 .color-box {
   width: 1500px;
-  height: 140vh;
+  height: 118vh;
   position: absolute;
   top: 0%;
   left: 50%;
