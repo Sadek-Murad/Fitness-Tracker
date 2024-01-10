@@ -31,14 +31,28 @@ const exercises = new mongoose.Schema({
 const exercise = mongoose.model('exercises', exercises);
 
 const individualWorkoutSchema = new mongoose.Schema({
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: RegisterUser },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'RegisterUser' },
     exerciseId: String,
     sets: Number,
-}, { timestamps: true })
+}, { timestamps: true });
 
-const individualWorkout = mongoose.model('individualWorkout', individualWorkoutSchema);
+const IndividualWorkout = mongoose.model('IndividualWorkout', individualWorkoutSchema);
 
-module.exports = { individualWorkout, RegisterUser, exercise };
+const statisticSchema = new mongoose.Schema({
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'RegisterUser' },
+    workout: { type: mongoose.Schema.Types.ObjectId, ref: 'IndividualWorkout' },
+    performance: [{
+        set: Number,
+        reps: Number,  
+        weight: Number,
+    }],
+    date: { type: Date, default: Date.now }
+});
+
+const Statistic = mongoose.model('Statistic', statisticSchema);
+
+
+module.exports = { IndividualWorkout, RegisterUser, exercise, Statistic };
 
 /* const userProfileSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'RegisterUser' },
