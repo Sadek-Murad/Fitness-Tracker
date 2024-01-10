@@ -119,10 +119,32 @@ router.post('/workout', async(req, res) =>{
         res.status(200).send({'Msg': 'Workout successfuly saved'});
     } catch (error) {
         console.error('Error saving workouts', error)
-        res.status(500).send
+        res.status(500).send('Error saving workouts')
     }
          
 })
+
+
+
+router.get('/workout/:userId', async (req, res) => {
+    const userId = req.params.userId;
+
+    try {
+        
+        const userWorkouts = await IndividualWorkout.find({ userId: userId }).populate('exerciseId');
+
+       
+        const exercisesToShow = userWorkouts.map(workout => workout.exerciseId);
+
+       
+        res.render('workout-page', { exercises: exercisesToShow }); 
+    } catch (error) {
+        console.error('Error retrieving exercises', error);
+        res.status(500).render('error-page');
+    }
+});
+
+
 
 
 

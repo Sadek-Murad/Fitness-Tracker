@@ -18,17 +18,17 @@ const userSchema = new mongoose.Schema({
 // userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 
 
-const RegisterUser = mongoose.model("User", userSchema)
+const RegisterUser = mongoose.model("RegisterUser", userSchema)
 
 
-const exercises = new mongoose.Schema({
+const exercisesSchema = new mongoose.Schema({
     name: String,
     type: String,
     difficulty: String,
     muscle: String
 })
 
-const exercise = mongoose.model('exercises', exercises);
+const Exercise = mongoose.model('Exercise', exercisesSchema);
 
 const individualWorkoutSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'RegisterUser' },
@@ -40,7 +40,7 @@ const IndividualWorkout = mongoose.model('IndividualWorkout', individualWorkoutS
 
 const statisticSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'RegisterUser' },
-    workout: { type: mongoose.Schema.Types.ObjectId, ref: 'IndividualWorkout' },
+    workout: { type: mongoose.Schema.Types.ObjectId, ref: 'Exercise' },
     performance: [{
         set: Number,
         reps: Number,  
@@ -52,7 +52,7 @@ const statisticSchema = new mongoose.Schema({
 const Statistic = mongoose.model('Statistic', statisticSchema);
 
 
-module.exports = { IndividualWorkout, RegisterUser, exercise, Statistic };
+module.exports = { IndividualWorkout, RegisterUser, Exercise, Statistic };
 
 /* const userProfileSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'RegisterUser' },
