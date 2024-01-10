@@ -108,7 +108,7 @@ router.post('/workout', async(req, res) =>{
             return res.send(400).send({'Msg': 'Input must be an array'});
         }
         for (const workoutData of workouts) {
-            const neuWorkout = new individualWorkout({
+            const neuWorkout = new IndividualWorkout({
                 userId: userId, 
                 exerciseId: workoutData.exerciseId,
                 sets: workoutData.sets
