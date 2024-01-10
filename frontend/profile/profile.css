@@ -1,3 +1,5 @@
+
+
 .background {
 margin-top: 250px;
 text-align: left;
@@ -119,10 +121,6 @@ button {
 button:hover {
   background-color: rgb(89, 154, 154) !important;
 }
-
-/* input[type="submit"]:hover {
-  background-color: rgb(89, 154, 154);
-} */
 
 
 /* Overlay */
