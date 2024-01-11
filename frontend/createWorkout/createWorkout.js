@@ -91,8 +91,8 @@ function createWorkout() {
                 "sets": sets.value,
             });
 
-            console.log('exerciseList', exerciseList)
-            window.location.href = "../trackWorkout/trackWorkout.html"
+            console.log('exerciseList', exerciseList);
+            // window.location.href = "../trackWorkout/trackWorkout.html";
         }
     });
 
@@ -105,7 +105,7 @@ function createWorkout() {
         body: JSON.stringify(exerciseList),
     };
 
-    fetch("http://127.0.0.1:3000/api/workout/659eac250754d960fdf04831", requestOptions)
+    fetch("http://127.0.0.1:3000/api/userworkout/659fbd2b7290ab53c0b5ca38", requestOptions)
         .then(response => {
             // Check if the response status is OK (200-299)
             if (!response.ok) {

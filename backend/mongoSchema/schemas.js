@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
 
 const userSchema = new mongoose.Schema({
@@ -11,8 +12,8 @@ const userSchema = new mongoose.Schema({
     weight: Number,
     profileImage: String,
     BMI: Number,
-    isNewUser: { type: Boolean, default: true }
-
+    isNewUser: { type: Boolean, default: true },
+    workouts: [{ type: Schema.Types.ObjectId, ref: 'IndividualWorkout' }],
 })
 
 // userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
