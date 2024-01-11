@@ -173,19 +173,31 @@ router.post('/userworkout/:id', async (req, res) => {
 })
 
 
-
 router.get('/workout/:userId', async (req, res) => {
     const userId = req.params.userId;
-    console.log('userId', userId)
+    console.log('userId', userId);
+    const existingUser = await RegisterUser.findById(userId)
+        .populate({
+            path: 'workouts',
+            match: { userId: userId },
+            options: { lean: true } // ToObject won't be needed with lean:true
+        });
+    console.log('existingUser', existingUser);
+
     try {
-        const userWorkouts = await IndividualWorkout.find({ userId: userId }).populate('exerciseId');
-        const exercisesToShow = userWorkouts.map(workout => workout.exerciseId);
-        res.render('workout-page', { exercises: exercisesToShow });
+        const userWorkouts = existingUser.workouts
+            .filter(workout => workout.userId === userId)
+            .map(workout => ({ ...workout.toObject() }));
+
+        console.log('userWorkouts', userWorkouts);
+
+        res.render('workout-page', { workouts: userWorkouts });
     } catch (error) {
         console.error('Error retrieving exercises', error);
         res.status(500).render('error-page');
     }
 });
+
 
 
 

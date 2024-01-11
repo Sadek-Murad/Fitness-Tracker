@@ -118,7 +118,7 @@ function createWorkout() {
         .then(data => {
             // Handle the response data
             console.log('POST successful:', data);
-            // window.location.href = "http://127.0.0.1:5500/frontend/trackWorkout/trackWorkout.html?id=659eac250754d960fdf04831"
+            window.location.href = "http://127.0.0.1:5500/frontend/trackWorkout/trackWorkout.html?id=659fbd2b7290ab53c0b5ca38"
         })
         .catch(error => {
             // Handle errors
