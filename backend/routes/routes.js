@@ -114,6 +114,7 @@ router.post('/workout/:id', async (req, res) => {
         }
         for (const workoutData of workouts) {
             const neuWorkout = new IndividualWorkout({
+                workoutId: workoutData.workoutId,
                 userId: workoutData.userId,
                 exerciseId: workoutData.exerciseId,
                 sets: workoutData.sets
@@ -134,15 +135,9 @@ router.post('/workout/:id', async (req, res) => {
 router.get('/workout/:userId', async (req, res) => {
     const userId = req.params.userId;
     console.log('userId', userId)
-
     try {
-
         const userWorkouts = await IndividualWorkout.find({ userId: userId }).populate('exerciseId');
-
-
         const exercisesToShow = userWorkouts.map(workout => workout.exerciseId);
-
-
         res.render('workout-page', { exercises: exercisesToShow });
     } catch (error) {
         console.error('Error retrieving exercises', error);

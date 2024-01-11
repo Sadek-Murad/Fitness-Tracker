@@ -1,11 +1,11 @@
 let originalValues = {}; // Hier werden die ursprünglichen Werte gespeichert
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const id = urlParams.get('id');
-console.log('id', id)
+// const id = urlParams.get('id');
 
+let id = "659eac250754d960fdf04831"
 // Make a simple GET request
-fetch('https://127.0.0.1:3000/api/workout?' + id)
+fetch('https://127.0.0.1:3000/api/workout/' + id)
     .then(response => {
         // Check if the request was successful (status code 200-299)
         if (!response.ok) {

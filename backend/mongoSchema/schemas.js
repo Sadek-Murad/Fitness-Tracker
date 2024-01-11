@@ -31,6 +31,7 @@ const exercisesSchema = new mongoose.Schema({
 const Exercise = mongoose.model('Exercise', exercisesSchema);
 
 const individualWorkoutSchema = new mongoose.Schema({
+    workoutId: String,
     userId: String,
     exerciseId: String,
     sets: Number,

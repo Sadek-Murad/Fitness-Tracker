@@ -67,11 +67,15 @@ function createWorkout() {
 
     let exerciseList = [];
 
+    let workoutId = Math.floor(Math.random() * Math.pow(2, 30));
+    console.log('workoutId', workoutId)
+
     Array.from(elements).forEach(element => {
 
         let paragraph = element.querySelector("p");
         let id = paragraph.id;
         let sets = element.querySelector('input[type="number"]');
+
         // console.log('element', element)
 
         if (sets && sets.value) {
@@ -81,6 +85,7 @@ function createWorkout() {
             // let muscle = element.querySelector('span').innerText;
 
             exerciseList.push({
+                "workoutId": workoutId,
                 "userId": "659eac250754d960fdf04831",
                 "exerciseId": id,
                 "sets": sets.value,
@@ -90,7 +95,7 @@ function createWorkout() {
             window.location.href = "../trackWorkout/trackWorkout.html"
         }
     });
-    console.log('CCCCCCCC', exerciseList)
+
     const requestOptions = {
         method: 'POST',
         headers: {
