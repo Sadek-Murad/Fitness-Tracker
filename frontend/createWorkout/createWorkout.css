@@ -1,5 +1,12 @@
-/* <!-- Navi --> */
-/* ul {
+body {
+  position: relative;
+  top: 5em;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/*<!-- Navi --> */
+.navContainer ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -16,12 +23,11 @@
   z-index: 1000;
 }
 
-
-li {
+.navContainer li {
   float: left;
 }
 
-li a {
+.navContainer li a {
   display: block;
   color: #666;
   text-align: center;
@@ -29,4 +35,14 @@ li a {
   padding: 16px 18px;
   text-decoration: none;
   line-height: 47px;
-} */
+}
+
+.navContainer li a:hover:not(.active) {
+  color: #fff;
+  background-color: rgb(89, 154, 154);
+}
+
+.navContainer li a.active {
+  color: white;
+  background-color: rgb(3, 80, 80);
+}

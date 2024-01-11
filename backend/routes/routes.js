@@ -189,9 +189,9 @@ router.get('/workout/:userId', async (req, res) => {
             .filter(workout => workout.userId === userId)
             .map(workout => ({ ...workout.toObject() }));
 
-        console.log('userWorkouts', userWorkouts);
+        // console.log('userWorkouts', userWorkouts);
 
-        res.render('workout-page', { workouts: userWorkouts });
+        res.status(200).send({ "userWorkouts": userWorkouts });
     } catch (error) {
         console.error('Error retrieving exercises', error);
         res.status(500).render('error-page');

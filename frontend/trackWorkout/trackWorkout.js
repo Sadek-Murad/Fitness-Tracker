@@ -8,7 +8,7 @@ console.log('XXXXX', userId)
 
 // Assuming userId is defined elsewhere in your code
 
-fetch('/workout/' + userId)
+fetch('http://127.0.0.1:3000/api/workout/' + userId)
     .then(response => {
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -29,7 +29,7 @@ fetch('/workout/' + userId)
 export default function displayWorkout(data) {
     let trackWorkoutContainer = document.getElementById('trackWorkoutContainer');
 
-    data.forEach(workout => {
+    data.userWorkouts.forEach(workout => {
         let set = document.createElement('div');
         let exerciseId = document.createElement('p');
         console.log('exerciseId', exerciseId);
