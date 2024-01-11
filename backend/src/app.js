@@ -1,8 +1,8 @@
 const fs = require('fs');
 const http = require('http');
 const https = require('https');
-const pkey = fs.readFileSync('../Auth/fitness-selfsigned.key', 'utf-8');
-const cert = fs.readFileSync('../Auth/fitness-selfsigned.crt', 'utf-8');
+const pkey = fs.readFileSync('../Auth/privkey.pem', 'utf-8');
+const cert = fs.readFileSync('../Auth/cert.pem', 'utf-8');
 const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
@@ -49,15 +49,15 @@ const httpServer = http.createServer(app);
 const httpsServer = https.createServer(credentials, app);
 
 
-const port = 3000;
-const secport = 3333;
+const port = 5500;
+const secport = 3000;
 
 
 
 
 //Verbindung zur Datenbank
 // mongoose.connect(`mongodb://localhost:27017/Fitness-Tracker`, {
-mongoose.connect(`mongodb+srv://ft-db:oToWm1tPUDYZDpga@fitty-tracker.ucnz3cm.mongodb.net/?retryWrites=true&w=majority`, {
+mongoose.connect(process.env.MONGO_CONN_STRING, {
 }).then(() => console.log("connected to MongoDB"))
     .catch((e) => console.error("Failed to connect to MongoDB" + e));
 
