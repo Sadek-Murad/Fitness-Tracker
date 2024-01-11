@@ -3,7 +3,7 @@ const logoutButton = document.getElementById('logoutButton');
 
 logoutButton.addEventListener('click', async () => {
   try {
-    const response = await fetch("http://localhost:3000/api/logout", {
+    const response = await fetch("https://fitness-tracker.byte-jumper.de:3000/api/logout", {
       method: 'GET',
     });
 

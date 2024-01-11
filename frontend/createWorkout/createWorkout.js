@@ -1,4 +1,4 @@
-fetch('http://localhost:3000/api/exercises')
+fetch('https://fitness-tracker.byte-jumper.de:3000/api/exercises')
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -100,7 +100,7 @@ function createWorkout() {
         body: JSON.stringify(exerciseList),
     };
 
-    fetch("http://127.0.0.1:3000/api/workout/659eac250754d960fdf04831", requestOptions)
+    fetch("https://fitness-tracker.byte-jumper.de:3000/api/workout/659eac250754d960fdf04831", requestOptions)
         .then(response => {
             // Check if the response status is OK (200-299)
             if (!response.ok) {

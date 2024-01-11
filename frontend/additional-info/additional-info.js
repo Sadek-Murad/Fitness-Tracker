@@ -21,7 +21,7 @@ function register() {
             "id": id, "age": age.value, "gender": gender.value, "height": height.value, "weight": weight.value
         })
     }
-    fetch("http://localhost:3000/api/additional-info", options)
+    fetch("https://fitness-tracker.byte-jumper.de:3000/api/additional-info", options)
         .then(res => {
             console.log("RESPONSE", res);
             if (res.ok) {

@@ -5,7 +5,7 @@ const id = urlParams.get('id');
 console.log('id', id)
 
 // Make a simple GET request
-fetch('https://127.0.0.1:3000/api/workout?' + id)
+fetch('https://fitness-tracker.byte-jumper.de:3000/api/workout?' + id)
     .then(response => {
         // Check if the request was successful (status code 200-299)
         if (!response.ok) {
