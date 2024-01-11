@@ -1,25 +1,51 @@
+@media screen and (max-width: 568px) {
+  .background {
+    background-color: #ffffff00 !important;
+    outline: none !important;
+  }
+}  
 
-body {
-  margin: 0;
-  padding: 0;
+.background {
+margin-top: 250px;
+text-align: left;
+position: relative;
+width: 800px;
+height: 800px;
+margin: 0 auto;
+margin-top: 80px;
+filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.376));
 }
 
+
+
+h1 {
+  font-size: 45px;
+  color: #000000;
+}
+
+.container {
+  max-width: 1500px;
+  flex: 1;
+}
 
 /* <!-- Navi --> */
 ul {
   list-style-type: none;
-  margin-top: 15%;
   margin: 0;
   padding: 0;
   overflow: hidden;
   border: 1px solid #e7e7e7;
-  background-color: #f3f3f3;
+  background-color: #e6ebec;
   position: fixed;
   top: 0;
-  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1500px;
   height: 80px;
   z-index: 1000;
 }
+
 
 li {
   float: left;
@@ -36,22 +62,27 @@ li a {
 }
 
 li a:hover:not(.active) {
-  background-color: #ddd;
+  color: #fff;
+  background-color: rgb(89, 154, 154)
 }
 
 li a.active {
   color: white;
-  background-color: rgb(0, 101, 101);
+  background-color: rgb(3, 80, 80);
 }
 
-/* Foto */
+/* Overlay */
 .background {
-  position: relative;
-  width: 1200px;
-  height: 1200px;
-  background-image: url(image/background.png);
-  margin: 0 auto;
-  margin-top: 200px;
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 800px;
+  background-color:#ffffffa1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 25px;
+  outline: 1px solid rgba(12, 12, 12, 0.386);
 }
 
 .login-container h1 {
@@ -64,14 +95,14 @@ li a.active {
   max-width: 360px;
   max-height: 750px;
   top: 25%;
-  left: 20%;
+  left: 15%;
   position: relative;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  color: #fff
+  color: #000000;
 }
 
 /* Eingabefelder */
@@ -100,56 +131,55 @@ input[type="submit"] {
   border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-}
-
-/* button google */
-.button-center {
-  margin-left: auto;
-  margin-right: 15px;
-  margin-top: 2%;
-  margin-bottom: 1%;
-  float: right;
-  position: relative;
+  border: 1px solid #000000;
 }
 
 /* Button */
-.btn-primary,
-input[type="submit"] {
-  width: 150px;
-  height: 50px;
-  background-color: rgb(0, 101, 101);
-  outline: none;
-  border: none;
-  border-radius: 20px;
-  transition: background-color 0.3s ease;
+button {
   text-align: center;
-  line-height: 33px;
+  position: absolute;
+  top: 110%;
+  left: 60px;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 50px;
+  border-radius: 20px !important;
+  border: none !important;
+  outline: 1px solid rgb(201, 255, 255) ;
+  background-color: rgb(0, 101, 101) !important;
   cursor: pointer;
 }
 
-input[type="submit"]:hover {
-  background-color: rgb(0, 26, 26);
+button:hover {
+  background-color: rgb(89, 154, 154) !important;
 }
 
-/* Overlay */
-.background::before {
-  content: "";
-  position: absolute;
-  top: 10%;
-  left: 15%;
-  width: 70%;
-  height: 80%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
 
-/* Hintergrund */
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
+.footer {
+  background-color: #e6ebec;
+  padding: 20px 0;
+  max-width: 1500px;
+  max-height: 1600px;
+  margin: 0 auto;
   width: 100%;
-  height: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  position:fixed
+}
+
+.color-box {
+  width: 1500px;
+  height: 140vh;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-image: url(image/background_profile.png);
   z-index: -1;
-  background: linear-gradient(to bottom, rgb(21, 36, 56), rgb(7, 11, 19));
+  filter: drop-shadow(0 0 2px rgba(71, 71, 71, 0.8));
 }

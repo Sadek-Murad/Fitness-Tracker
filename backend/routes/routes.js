@@ -100,44 +100,50 @@ router.get('/exercises', async (req, res) => {
     }
 });
 
-router.post('/workout', async(req, res) =>{
-    const userId = req.body._id
+router.post('/workout/:id', async (req, res) => {
+    const userId = req.params.id;
+    // console.log('XXXXXXXXXXXXXX', userId);
     try {
-        const workouts = req.body.workouts
-        if(!Array.isArray(workouts)){
-            return res.send(400).send({'Msg': 'Input must be an array'});
+        const workouts = req.body;
+        for (let workout of workouts) {
+            workout.userId = userId;
+        }
+        // console.log('workouts', workouts);
+        if (!Array.isArray(workouts)) {
+            return res.send(400).send({ 'Msg': 'Input must be an array' });
         }
         for (const workoutData of workouts) {
             const neuWorkout = new IndividualWorkout({
-                userId: userId, 
+                userId: workoutData.userId,
                 exerciseId: workoutData.exerciseId,
                 sets: workoutData.sets
             })
             await neuWorkout.save();
         }
-
-        res.status(200).send({'Msg': 'Workout successfuly saved'});
+        res.status(200).send({ 'Msg': 'Workout successfuly saved' });
+        // res.redirect(301, `http://localhost:5500/frontend/trackWorkout/trackWorkout.html?id=${req.body.id}`)
     } catch (error) {
         console.error('Error saving workouts', error)
         res.status(500).send('Error saving workouts')
     }
-         
+
 })
 
 
 
 router.get('/workout/:userId', async (req, res) => {
     const userId = req.params.userId;
+    console.log('userId', userId)
 
     try {
-        
+
         const userWorkouts = await IndividualWorkout.find({ userId: userId }).populate('exerciseId');
 
-       
+
         const exercisesToShow = userWorkouts.map(workout => workout.exerciseId);
 
-       
-        res.render('workout-page', { exercises: exercisesToShow }); 
+
+        res.render('workout-page', { exercises: exercisesToShow });
     } catch (error) {
         console.error('Error retrieving exercises', error);
         res.status(500).render('error-page');

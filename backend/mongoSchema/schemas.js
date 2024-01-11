@@ -31,7 +31,7 @@ const exercisesSchema = new mongoose.Schema({
 const Exercise = mongoose.model('Exercise', exercisesSchema);
 
 const individualWorkoutSchema = new mongoose.Schema({
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'RegisterUser' },
+    userId: String,
     exerciseId: String,
     sets: Number,
 }, { timestamps: true });
@@ -43,7 +43,7 @@ const statisticSchema = new mongoose.Schema({
     workout: { type: mongoose.Schema.Types.ObjectId, ref: 'Exercise' },
     performance: [{
         set: Number,
-        reps: Number,  
+        reps: Number,
         weight: Number,
     }],
     date: { type: Date, default: Date.now }

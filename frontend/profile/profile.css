@@ -1,19 +1,42 @@
-.background {
-margin-top: 250px;
-text-align: left;
-position: relative;
-width: 800px;
-height: 800px;
-margin: 0 auto;
-margin-top: 80px;
-filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
+@media screen and (max-width: 568px) {
+  .background .formular h1 {
+    color: #000000 !important;
+  }
+  
+  .background .formular p {
+    color: #000000 !important;
+  }
+
+
+  .background {
+    outline: none !important;
+  }
+
+
+  .color-box {
+    width: 1500px;
+    height: 116vh;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url(image/background_profile.png);
+    z-index: -1;
+    filter: drop-shadow(0 0 2px rgba(71, 71, 71, 0.8));
+  }
+  ul {
+    width: 100% !important;
+    left: 0;
+    transform: none;
+  }
+
+  .footer {
+    width: 100% !important;
+    left: 0;
+    transform: none;
+  }
 }
 
-
-
-h1 {
-  font-size: 25px;
-}
 
 .container {
   max-width: 1500px;
@@ -70,15 +93,16 @@ margin-top: 150px;
 }
 
 .formular h1 {
-  top: -15%;
-  color: #fff;
-  margin-left: 170px;
+  margin-top: 2%;
+  color: #000000;
+  margin-left: 120px;
 }
 
 .formular p {
-  color: #fff;
+  color: #000000;
   font-size: 15px;
   margin-left: 150px;
+  margin-top: 30px;
 }
 
 .formular span {
@@ -87,20 +111,19 @@ margin-top: 150px;
 
 .formular input[type="text"] {
   padding: 5px;
-  border-radius: 5px; /* Ecken der Input-Felder abrunden */
-  border: 1px solid #ccc;
-  position: absolute;
-  top: 90%;
-  left: 200px;
-
+  border-radius: 5px;
+  border: 1px solid #e6ebec;
 }
 
 /* Profilbild */
 .rounded {
 border-radius: 100px !important;
 position: absolute;
-top: 50px;
-left: 150px;
+top: 10px;
+left: 180px;
+width: 120px;
+height: 120px;
+outline: 1px solid rgba(12, 12, 12, 0.386)
 }
 
 /* Button */
@@ -114,6 +137,7 @@ button {
   height: 50px;
   border-radius: 20px !important;
   border: none !important;
+  outline: 1px solid rgb(201, 255, 255) ;
   background-color: rgb(0, 101, 101) !important;
   cursor: pointer;
 }
@@ -122,9 +146,6 @@ button:hover {
   background-color: rgb(89, 154, 154) !important;
 }
 
-/* input[type="submit"]:hover {
-  background-color: rgb(89, 154, 154);
-} */
 
 /* Overlay */
 .background {
@@ -132,11 +153,12 @@ button:hover {
   position: absolute;
   width: 500px;
   height: 800px;
-  background-color:rgb(206, 206, 206);
+  background-color:#ffffff4f;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 25px;
+  outline: 1px solid rgba(12, 12, 12, 0.386)
 }
 
 .footer {
@@ -158,7 +180,7 @@ button:hover {
 
 .color-box {
   width: 1500px;
-  height: 140vh;
+  height: 114vh;
   position: absolute;
   top: 0%;
   left: 50%;
