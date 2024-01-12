@@ -7,6 +7,7 @@ const individualWorkoutSchema = new mongoose.Schema({
     userId: String,
     exerciseId: String,
     sets: Number,
+    status: String
 }, { timestamps: true });
 
 const IndividualWorkout = mongoose.model('IndividualWorkout', individualWorkoutSchema);

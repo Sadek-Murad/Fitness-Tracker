@@ -153,7 +153,8 @@ router.post('/userworkout/:id', async (req, res) => {
                 workoutId: workoutData.workoutId,
                 userId: userId,  // Assign the userId from the route parameters
                 exerciseId: workoutData.exerciseId,
-                sets: workoutData.sets
+                sets: workoutData.sets,
+                status: "active"
             });
 
 
@@ -176,22 +177,37 @@ router.post('/userworkout/:id', async (req, res) => {
 router.get('/workout/:userId', async (req, res) => {
     const userId = req.params.userId;
     console.log('userId', userId);
+
+
+
     const existingUser = await RegisterUser.findById(userId)
         .populate({
             path: 'workouts',
             match: { userId: userId },
             options: { lean: true } // ToObject won't be needed with lean:true
         });
-    console.log('existingUser', existingUser);
+    console.log('XXXXXXXXXXXXXX', existingUser);
+
+    /* existingUser.populate({
+        path: 'workouts',
+        match: { userId: userId },
+        options: { lean: true },
+        populate: {
+            path: 'exerciseId',
+            model: 'Exercise',
+            select: 'name', // Specify the fields you want to select from the Exercise collection
+            match: { _id: { $in: existingUser.workouts.map(workout => workout.workoutId) } }
+        }
+    });
+    console.log(existingUser); */
 
     try {
-        const userWorkouts = existingUser.workouts
-            .filter(workout => workout.userId === userId)
-            .map(workout => ({ ...workout.toObject() }));
+        const activeWorkouts = await existingUser.workouts.filter(workout => workout.status === "active").map(workout => ({ ...workout.toObject() }));;
+        console.log('activeWorkouts', activeWorkouts)
 
         // console.log('userWorkouts', userWorkouts);
 
-        res.status(200).send({ "userWorkouts": userWorkouts });
+        res.status(200).send({ "userWorkouts": activeWorkouts });
     } catch (error) {
         console.error('Error retrieving exercises', error);
         res.status(500).render('error-page');

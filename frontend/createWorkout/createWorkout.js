@@ -58,8 +58,6 @@ function createExerciseContainer(exercise) {
     return exerciseContainer
 }
 
-
-
 function createWorkout() {
     // console.log('exercise', exercise[0]._id)
 
@@ -89,6 +87,7 @@ function createWorkout() {
                 "userId": "659eac250754d960fdf04831",
                 "exerciseId": id,
                 "sets": sets.value,
+                "status": "active"
             });
 
             console.log('exerciseList', exerciseList);
@@ -137,13 +136,11 @@ function displayData(data) {
     const submitButton = document.createElement("button");
     submitButton.type = "submit";
     submitButton.innerHTML = "save";
-    submitButton.classList.add("btn", "btn-primary")
-    submitButton.style = "width: 100%; margin: 1em auto"
+    submitButton.classList.add('submit-button');
     submitButton.addEventListener('click', createWorkout);
     submitButtonContainer.appendChild(submitButton);
 
     data.forEach(exercise => {
-
 
         if (exercise.type == "Bodyweight") {
 

@@ -26,17 +26,50 @@ fetch('http://127.0.0.1:3000/api/workout/' + userId)
     });
 
 
+function saveWorkout() {
+
+    let elements = document.querySelector('input');
+    console.log('elements', elements)
+
+}
+
 export default function displayWorkout(data) {
     let trackWorkoutContainer = document.getElementById('trackWorkoutContainer');
 
     data.userWorkouts.forEach(workout => {
-        let set = document.createElement('div');
-        let exerciseId = document.createElement('p');
-        console.log('exerciseId', exerciseId);
-        exerciseId.innerHTML = workout.exerciseId;
 
-        set.appendChild(exerciseId);
-        trackWorkoutContainer.appendChild(set);
+        for (let i = 1; i <= workout.sets; i++) {
+
+            console.log('workout', workout)
+            let setForm = document.createElement('form');
+
+            let setContainer = document.createElement('div');
+            setContainer.classList.add('border', 'p-3', 'mb-4')
+
+            let container = document.createElement('div')
+            container.classList.add('d-flex')
+
+            let name = document.createElement('p');
+            name.innerHTML = "name";
+
+            let set = document.createElement('p');
+            set.innerText = "set"
+
+            let weight = document.createElement('input');
+            weight.classList.add('mx-4')
+
+            let reps = document.createElement('input');
+            reps.classList.add('mx-4')
+
+            setContainer.appendChild(name);
+            setContainer.appendChild(container);
+            container.appendChild(set);
+            container.appendChild(weight);
+            container.appendChild(reps);
+            setForm.appendChild(setContainer)
+            trackWorkoutContainer.appendChild(setForm);
+        }
+
     });
 }
 
