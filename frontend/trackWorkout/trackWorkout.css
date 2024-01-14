@@ -70,3 +70,28 @@ body {
 .navContainer button:hover {
   background-color: rgb(89, 154, 154) !important;
 }
+
+/* Button */
+#submit-button {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-button {
+  text-align: center;
+  color: #fff;
+  width: 120px;
+  height: 50px;
+  border-radius: 20px;
+  border: none;
+  background-color: rgb(0, 101, 101);
+  cursor: pointer;
+}
+
+.submit-button button {
+  margin: 1 auto;
+}
+
+.submit-button:hover {
+  background-color: rgb(89, 154, 154);
+}
