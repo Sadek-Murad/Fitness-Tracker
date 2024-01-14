@@ -9,14 +9,16 @@ const path = require("path");
 const { Db } = require("mongodb");
 
 
-function attachAccessToken(req, res, next) {
-    if (req.isAuthenticated()) {
-      req.accessToken = req.user.googleAccessToken; 
-      next();
+function isLoggedIn(req, res, next) {
+    console.log("Req", req);
+    console.log("req.isAuthenticated()", req.isAuthenticated());
+    if (req.body) {
+        // req.accessToken = req.user.googleAccessToken;
+        next();
     } else {
-      res.status(401).send("Nicht authentifiziert");
+        res.status(401).send({ "msg": "Nicht authentifiziert" });
     }
-  }
+}
 
 
 // Authentifizierungsrouten
@@ -25,14 +27,14 @@ router.get('/auth/google', passport.authenticate('google'));
 
 
 router.get('/auth/google/callback',
-    passport.authenticate('google', { failureRedirect: '/login' }),
+    passport.authenticate('google', { failureRedirect: 'http://localhost:5500/frontend/' }),
     async (req, res) => {
         try {
             if (req.user.isNewUser) {
-                
+
                 res.redirect('http://localhost:5500/frontend/additional-info/additional-info.html?id=' + req.user._id);
             } else {
-                
+
                 res.redirect('http://localhost:5500/frontend/profile/profile.html?id=' + req.user._id);
             }
         } catch (error) {
@@ -42,7 +44,7 @@ router.get('/auth/google/callback',
     }
 );
 
-router.post('/additional-info', attachAccessToken, async (req, res) => {
+router.post('/additional-info', isLoggedIn, async (req, res) => {
     try {
         await RegisterUser.findByIdAndUpdate(req.body.id, {
             age: req.body.age,
@@ -70,7 +72,7 @@ router.get('/logout', (req, res) => {
 
 // Profilrouten
 //Get information
-router.get('/profile/:id',attachAccessToken, async (req, res) => {
+router.get('/profile/:id', isLoggedIn, async (req, res) => {
     try {
         const userId = req.params.id;
         const existingUser = await RegisterUser.findById(userId);
@@ -87,15 +89,15 @@ router.get('/profile/:id',attachAccessToken, async (req, res) => {
 
 // Profilrouten
 //Update the user
-router.patch('/profile/:id',attachAccessToken, async (req, res) => {
+router.patch('/profile/:id', isLoggedIn, async (req, res) => {
     try {
         const userId = req.params.id
         const updateUser = req.body;
         const existingUser = await RegisterUser.findByIdAndUpdate(userId, updateUser, { new: true });
-        
-    
-        
-          if (!existingUser) {
+
+
+
+        if (!existingUser) {
             return res.status(412).send({ "msg": "User not found" });
         }
         return res.status(200).send(existingUser);
