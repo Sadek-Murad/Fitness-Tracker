@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router();
-const { IndividualWorkout, RegisterUser, Exercise, Statistic } = require("../mongoSchema/schemas");
+const { IndividualWorkout, RegisterUser, Exercise, SavedWorkout, Statistic } = require("../mongoSchema/schemas");
 const mongoose = require("mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const passport = require('../Auth/auth');
@@ -221,7 +221,7 @@ router.get('/workout/:userId', async (req, res) => {
 
     try {
         const activeWorkouts = await existingUser.workouts.filter(workout => workout.status === "active").map(workout => ({ ...workout.toObject() }));;
-        console.log('activeWorkouts', activeWorkouts)
+        // console.log('activeWorkouts', activeWorkouts)
 
         // console.log('userWorkouts', userWorkouts);
 
@@ -234,7 +234,27 @@ router.get('/workout/:userId', async (req, res) => {
 
 
 
+router.post('/savedworkout', async (req, res) => {
 
+    console.log('req.body', req.body)
+    try {
+        const savedWorkout = req.body;
+
+        if (!Array.isArray(savedWorkout)) {
+            return res.send(400).send({ 'Msg': 'Input must be an array' });
+        }
+
+        // await savedWorkout.save();
+        await SavedWorkout.create(savedWorkout);
+
+        res.status(200).send({ 'Msg': 'Workout successfuly saved' });
+        // res.redirect(301, `http://localhost:5500/frontend/trackWorkout/trackWorkout.html?id=${req.body.id}`)
+    } catch (error) {
+        console.error('Error saving workouts', error)
+        res.status(500).send('Error saving workouts')
+    }
+
+})
 
 
 

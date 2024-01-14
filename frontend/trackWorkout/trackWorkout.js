@@ -1,4 +1,3 @@
-let originalValues = {}; // Hier werden die ursprünglichen Werte gespeichert
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const userId = urlParams.get('id');
@@ -28,19 +27,75 @@ fetch('http://127.0.0.1:3000/api/workout/' + userId)
 
 function saveWorkout() {
 
-    let elements = document.querySelector('input');
-    console.log('elements', elements)
+    // set status "inactive after save"
+
+    let elementsList = [];
+    let elements = document.querySelectorAll("input");
+    console.log('elements', elements.value);
+
+    elements.forEach(element => {
+        console.log(element.value);
+
+        elementsList.push(element.value)
+        console.log('elementsList', elementsList)
+
+    });
+
+    let weights = elementsList
+        .filter((element, index) => index % 2 == 0)
+
+    console.log('weights', weights)
+
+    let reps = elementsList
+        .filter((element, index) => index % 2 !== 0)
+
+    console.log('reps', reps)
+
+    let savedWorkout = ({
+        "userId": userId,
+        "weights": weights,
+        "reps": reps,
+    });
+
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            // Add any other headers as needed
+        },
+        body: JSON.stringify(savedWorkout),
+    };
+
+    fetch("http://127.0.0.1:3000/api/savedworkout", requestOptions)
+        .then(response => {
+            // Check if the response status is OK (200-299)
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            // Parse the response JSON
+            return response.json();
+        })
+        .then(data => {
+            // Handle the response data
+            console.log('POST successful:', data);
+            window.location.href = "http://127.0.0.1:5500/frontend/trackWorkout/trackWorkout.html" + userId;
+        })
+        .catch(error => {
+            // Handle errors
+            console.error('POST error:', error);
+        });
 
 }
 
-export default function displayWorkout(data) {
+function displayWorkout(data) {
     let trackWorkoutContainer = document.getElementById('trackWorkoutContainer');
 
     data.userWorkouts.forEach(workout => {
 
         for (let i = 1; i <= workout.sets; i++) {
 
-            console.log('workout', workout)
+            // console.log('workout', workout)
             let setForm = document.createElement('form');
 
             let setContainer = document.createElement('div');
@@ -56,10 +111,10 @@ export default function displayWorkout(data) {
             set.innerText = "set"
 
             let weight = document.createElement('input');
-            weight.classList.add('mx-4')
+            weight.classList.add('weight', 'mx-4')
 
             let reps = document.createElement('input');
-            reps.classList.add('mx-4')
+            reps.classList.add('reps', 'mx-4')
 
             setContainer.appendChild(name);
             setContainer.appendChild(container);
