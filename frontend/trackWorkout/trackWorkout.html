@@ -18,51 +18,26 @@
     <div class="navContainer">
       <ul>
         <!-- <li id="logoutButton"><a href="#">Logout</a></li> -->
-        <li><a class="active" href="/">Create</a></li>
-        <li><a href="/frontend/home.html">Home</a></li>
+        <!-- <li><a class="active" href="/">Home</a></li> -->
+        <li><a href="/frontend/createWorkout/createWorkout.html">Create</a></li>
+
         <li><a href="/frontend/profile/profile.html">Profil</a></li>
+
         <li><a href="/frontend/trackWorkout/trackWorkout.html">Track</a></li>
+
+        <li class="button-center">
+          <a
+            href="http://localhost:3000/api/auth/google/callback"
+            class="btn btn-primary"
+          >
+            <i class="bi bi-google"></i> Signin
+          </a>
+        </li>
       </ul>
     </div>
 
     <div class="plan">
-      <h1>Training plan name</h1>
-
       <div id="trackWorkoutContainer"></div>
-
-      <!-- <form class="border p-2">
-        <p>Exercise Name</p>
-        <div class="exercise-con d-flex gap-4 mt-4">
-          <div
-            class="input-group input-group-sm mb-3"
-            style="width: 50px; align-items: center"
-          >
-            <span id="set">Set 1</span>
-          </div>
-          <div class="input-group input-group-sm mb-3" style="width: 35%">
-            <span class="input-group-text" style="width: 60px" id="weight"
-              >Weight</span
-            >
-            <input
-              type="number"
-              class="form-control"
-              aria-label="Sizing example input"
-              aria-describedby="inputGroup-sizing-sm"
-            />
-          </div>
-          <div class="input-group input-group-sm mb-3" style="width: 35%">
-            <span class="input-group-text" style="width: 60px" id="reps"
-              >Reps</span
-            >
-            <input
-              type="number"
-              class="form-control"
-              aria-label="Sizing example input"
-              aria-describedby="inputGroup-sizing-sm"
-            />
-          </div>
-        </div>
-      </form> -->
 
       <button class="submit-button" type="button" onclick="saveWorkout()">
         save
