@@ -30,21 +30,31 @@
 
   <div class="background">
     <div class="formular">
-    <h1>Your Profile</h1>
-    <img id="profileImage" src="image/profil.png" class="rounded mx-auto d-block" alt="Profilbild" />  
-    <p>Firstname: <span id="firstname"></span></p>
-    <p>Lastname: <span id="lastname"></span></p>
-    <!-- Hier wird initial nur der Text angezeigt -->
-    <p>Age: <span id="ageText"></span><input id="age" type="text" style="display: none;"></p>
-    <p>Gender: <span id="genderText"></span><input id="gender" type="text" style="display: none;"></p>
-    <p>Height: <span id="heightText"></span><input id="height" type="text" style="display: none;"></p>
-    <p>Weight: <span id="weightText"></span><input id="weight" type="text" style="display: none;"></p>
-    <p>BMI: <span id="bmiText"></span><input id="bmi" type="text" style="display: none;"></p>
-    <p>E-Mail: <span id="email"></span></p>
-    <button type="button" class="btn btn-primary" onclick="save()">Save</button>
-    <button type="button" class="btn btn-primary" onclick="edit()">Edit</button>
+      <h1>Your Profile</h1>
+      <img id="profileImage" src="image/profil.png" class="rounded mx-auto d-block" alt="Profilbild" />
+  
+      <p>Firstname: <span id="firstname"></span></p>
+      <p>Lastname: <span id="lastname"></span></p>
+      <!-- Hier wird initial nur der Text angezeigt -->
+      <p>Age: <span id="ageText"></span><input id="age" type="text" style="display: none;"></p>
+      <p>Gender: <span id="genderText"></span><input id="gender" type="text" style="display: none;"></p>
+      <p>Height: <span id="heightText"></span><input id="height" type="text" style="display: none;"></p>
+      <p>Weight: <span id="weightText"></span><input id="weight" type="text" style="display: none;"></p>
+      <p>E-Mail: <span id="email"></span></p>
+  
+      <p>BMI:</p>
+      <div id="bmiScale" class="bmi-scale">
+
+         
+        <div id="bmiPointer" class="bmi-pointer"></div>
+      </div>
+      <span id="bmiText"></span><input id="bmi" type="text" style="display: none;"></p>
+      
+      <button type="button" class="btn btn-primary" onclick="save()">Save</button>
+      <button type="button" class="btn btn-primary" onclick="edit()">Edit</button>
+    </div>
   </div>
-</div>
+  
       <!-- Footer -->
       <footer class="footer mt-auto py-3" id="stickyFooter">
         <div class="container">

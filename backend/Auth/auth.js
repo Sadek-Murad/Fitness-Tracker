@@ -24,15 +24,19 @@ passport.use(new GoogleStrategy({
                 user.googleId = profile.id;
                 await user.save();
             } else {
-                // Erstellen eines neuen Benutzers
+                
                 user = new RegisterUser({
                     googleId: profile.id,
                     email: profile.emails[0].value,
                     firstname: profile.name.givenName,
                     lastname: profile.name.familyName,
                     profileImage: profile.photos[0].value,
-                    isNewUser: true
+                    isNewUser: true,
+                    
                 });
+                user.googleAccessToken = accessToken;
+                user.googleRefreshToken = refreshToken;
+
                 await user.save();
             }
         }

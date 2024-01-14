@@ -19,6 +19,32 @@ fetch("http://localhost:3000/api/profile/" + id)
   })
   .catch(error => console.error(error));
 
+  function calculateBMI(height, weight) {
+    if (height > 0 && weight > 0) {
+        const bmi = (weight / ((height / 100) ** 2)).toFixed(2);
+        updateBMIScale(bmi);
+        return bmi;
+    }
+    return 'Nicht verfügbar';
+}
+
+function updateBMIScale(bmi) {
+    const pointer = document.getElementById('bmiPointer');
+    const scaleWidth = document.getElementById('bmiScale').offsetWidth;
+    const maxBMI = 40; // Maximaler Wert auf der Skala
+    const position = (bmi / maxBMI) * scaleWidth;
+    pointer.style.left = `${Math.min(position, scaleWidth - 10)}px`; 
+    
+    if (bmi < 18.5 || bmi > 25) {
+        pointer.style.backgroundColor = 'red';
+    } else {
+        pointer.style.backgroundColor = 'green';
+    }
+}
+
+
+  
+
 function displayUserData(userData) {
   // Anzeige der Benutzerdaten auf der Seite
   document.getElementById('profileImage').src = originalValues.profileImage;
@@ -30,6 +56,7 @@ function displayUserData(userData) {
   document.getElementById('weightText').innerHTML = originalValues.weight;
   document.getElementById('bmiText').innerHTML = originalValues.bmi;
   document.getElementById('email').innerHTML = originalValues.email;
+  document.getElementById('bmiText').innerHTML = calculateBMI(userData.height, userData.weight);
 }
 
 function setDisplayFields(displayStyle) {
@@ -59,7 +86,7 @@ function save() {
     gender: document.getElementById('gender').value,
     height: document.getElementById('height').value,
     weight: document.getElementById('weight').value,
-    bmi: document.getElementById('bmi').value
+    
   };
 
   fetch('http://localhost:3000/api/profile/6596921b8cb903d3edf57f1c', {
