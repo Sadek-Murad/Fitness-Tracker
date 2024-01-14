@@ -131,8 +131,7 @@ router.get('/exercises', async (req, res) => {
 }) */
 
 router.post('/userworkout/:id', async (req, res) => {
-    let userId = "659fbd2b7290ab53c0b5ca38"
-    // const userId = req.params.id;
+    const userId = req.params.id;
     const existingUser = await RegisterUser.findById(userId)
     console.log('existingUser', existingUser)
     try {
@@ -220,7 +219,10 @@ router.post('/savedworkout', async (req, res) => {
 
     console.log('req.body', req.body)
     try {
-        const savedWorkout = req.body;
+        const savedWorkout = [];
+        const workout = req.body;
+        savedWorkout.push(workout);
+        console.log('savedWorkout', savedWorkout)
 
         if (!Array.isArray(savedWorkout)) {
             return res.send(400).send({ 'Msg': 'Input must be an array' });
@@ -228,17 +230,43 @@ router.post('/savedworkout', async (req, res) => {
 
         // await savedWorkout.save();
         await SavedWorkout.create(savedWorkout);
-
         res.status(200).send({ 'Msg': 'Workout successfuly saved' });
+
+
+
+
         // res.redirect(301, `http://localhost:5500/frontend/trackWorkout/trackWorkout.html?id=${req.body.id}`)
     } catch (error) {
         console.error('Error saving workouts', error)
         res.status(500).send('Error saving workouts')
     }
-
 })
 
+/* router.patch('/workout/:id', async (req, res) => {
+    const userId = req.params.id
+    const existingUser = await RegisterUser.findByIdAndUpdate(userId)
+    try {
+        const updateStatus = req.body;
+        console.log('updateStatus', updateStatus)
+        // const workouts = await existingUser.workouts.findByIdAndUpdate(userId, updateStatus, { new: true });
 
+        for (const workout of existingUser.workouts) {
+            await RegisterUser.updateOne(
+                { _id: existingUser._id, 'workouts._id': workout._id },
+                { $set: { 'workouts.$.status': updateStatus } }
+            );
+        }
+
+        if (!workouts) {
+            return res.status(412).send({ "msg": "User not found" });
+        }
+        return res.status(200).send(workouts);
+    } catch (error) {
+        console.error("Profile update failed: ", error);
+        return res.status(500).send({ "Msg": "Error updating profile" })
+
+    }
+}) */
 
 
 

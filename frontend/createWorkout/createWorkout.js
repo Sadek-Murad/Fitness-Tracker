@@ -83,9 +83,6 @@ function createWorkout() {
 
         if (sets && sets.value) {
             console.log('id', id)
-            // console.log('sets.value', sets.value, sets.id);
-            // let name = element.querySelector('p').innerText;
-            // let muscle = element.querySelector('span').innerText;
 
             exerciseList.push({
                 "workoutId": workoutId,

@@ -79,11 +79,44 @@ function saveWorkout() {
         .then(data => {
             // Handle the response data
             console.log('POST successful:', data);
-            window.location.href = "http://127.0.0.1:5500/frontend/trackWorkout/trackWorkout.html" + userId;
+            // window.location.href = "http://127.0.0.1:5500/frontend/trackWorkout/trackWorkout.html" + userId;
         })
         .catch(error => {
             // Handle errors
             console.error('POST error:', error);
+        });
+
+    const updatedData = {
+        status: "inactive"
+    };
+
+    const options = {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            // Add any other headers as needed
+        },
+        body: JSON.stringify(updatedData),
+    };
+
+    fetch('http://127.0.0.1:3000/api/workout/' + userId, options)
+        .then(response => {
+            // Check if the response status is OK (200-299)
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            // Parse the response JSON
+            return response.json();
+        })
+        .then(data => {
+            // Handle the response data
+            console.log('PATCH successful:', data);
+            // window.location.href = "http://127.0.0.1:5500/frontend/trackWorkout/trackWorkout.html" + userId;
+        })
+        .catch(error => {
+            // Handle errors
+            console.error('PATCH error:', error);
         });
 
 }
