@@ -1,6 +1,13 @@
+body {
+  position: relative;
+  top: 5em;
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
 
-/* <!-- Navi --> */
-ul {
+/*<!-- Navi --> */
+.navContainer ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -17,12 +24,11 @@ ul {
   z-index: 1000;
 }
 
-
-li {
+.navContainer li {
   float: left;
 }
 
-li a {
+.navContainer li a {
   display: block;
   color: #666;
   text-align: center;
@@ -30,4 +36,36 @@ li a {
   padding: 16px 18px;
   text-decoration: none;
   line-height: 47px;
+}
+
+.navContainer li a:hover:not(.active) {
+  color: #fff;
+  background-color: rgb(89, 154, 154);
+}
+
+.navContainer li a.active {
+  color: white;
+  background-color: rgb(3, 80, 80);
+}
+
+#submit-button {
+  display: flex;
+  justify-content: center;
+  margin: 1em auto;
+}
+
+/* Button */
+.submit-button {
+  text-align: center;
+  color: #fff;
+  width: 120px;
+  height: 50px;
+  border-radius: 20px;
+  border: none;
+  background-color: rgb(0, 101, 101);
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: rgb(89, 154, 154);
 }

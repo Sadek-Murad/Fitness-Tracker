@@ -5,7 +5,8 @@ const mongoose = require("mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const passport = require('../Auth/auth');
 const session = require('express-session');
-const path = require("path")
+const path = require("path");
+const { Db } = require("mongodb");
 
 // Authentifizierungsrouten
 //Google Authentifizierung starten
@@ -100,7 +101,7 @@ router.get('/exercises', async (req, res) => {
     }
 });
 
-router.post('/workout/:id', async (req, res) => {
+/* router.post('/workout/:id', async (req, res) => {
     const userId = req.params.id;
     // console.log('XXXXXXXXXXXXXX', userId);
     try {
@@ -114,6 +115,7 @@ router.post('/workout/:id', async (req, res) => {
         }
         for (const workoutData of workouts) {
             const neuWorkout = new IndividualWorkout({
+                workoutId: workoutData.workoutId,
                 userId: workoutData.userId,
                 exerciseId: workoutData.exerciseId,
                 sets: workoutData.sets
@@ -126,29 +128,92 @@ router.post('/workout/:id', async (req, res) => {
         console.error('Error saving workouts', error)
         res.status(500).send('Error saving workouts')
     }
+}) */
+
+router.post('/userworkout/:id', async (req, res) => {
+    let userId = "659fbd2b7290ab53c0b5ca38"
+    // const userId = req.params.id;
+    const existingUser = await RegisterUser.findById(userId)
+    console.log('existingUser', existingUser)
+    try {
+        const workouts = req.body;
+        for (let workout of workouts) {
+            workout.userId = userId;
+        }
+        // console.log('workouts', workouts);
+        if (!Array.isArray(workouts)) {
+            return res.send(400).send({ 'Msg': 'Input must be an array' });
+        }
+
+        const newWorkouts = [];
+
+        for (const workoutData of workouts) {
+            // Create a new IndividualWorkout document
+            const newWorkout = new IndividualWorkout({
+                workoutId: workoutData.workoutId,
+                userId: userId,  // Assign the userId from the route parameters
+                exerciseId: workoutData.exerciseId,
+                sets: workoutData.sets,
+                status: "active"
+            });
+
+
+            // Save the new workout document to the array
+            newWorkouts.push(newWorkout);
+        }
+        // Use $push to add the new workouts to the user's workouts array
+        console.log('newWorkouts', newWorkouts)
+        await existingUser.updateOne({ $push: { workouts: { $each: newWorkouts } } });
+        res.status(200).send({ 'Msg': 'Workout successfuly saved' });
+        // res.redirect(301, `http://localhost:5500/frontend/trackWorkout/trackWorkout.html?id=${req.body.id}`)
+    } catch (error) {
+        console.error('Error saving workouts', error)
+        res.status(500).send('Error saving workouts')
+    }
 
 })
 
 
-
 router.get('/workout/:userId', async (req, res) => {
     const userId = req.params.userId;
-    console.log('userId', userId)
+    console.log('userId', userId);
+
+
+
+    const existingUser = await RegisterUser.findById(userId)
+        .populate({
+            path: 'workouts',
+            match: { userId: userId },
+            options: { lean: true } // ToObject won't be needed with lean:true
+        });
+    console.log('XXXXXXXXXXXXXX', existingUser);
+
+    /* existingUser.populate({
+        path: 'workouts',
+        match: { userId: userId },
+        options: { lean: true },
+        populate: {
+            path: 'exerciseId',
+            model: 'Exercise',
+            select: 'name', // Specify the fields you want to select from the Exercise collection
+            match: { _id: { $in: existingUser.workouts.map(workout => workout.workoutId) } }
+        }
+    });
+    console.log(existingUser); */
 
     try {
+        const activeWorkouts = await existingUser.workouts.filter(workout => workout.status === "active").map(workout => ({ ...workout.toObject() }));;
+        console.log('activeWorkouts', activeWorkouts)
 
-        const userWorkouts = await IndividualWorkout.find({ userId: userId }).populate('exerciseId');
+        // console.log('userWorkouts', userWorkouts);
 
-
-        const exercisesToShow = userWorkouts.map(workout => workout.exerciseId);
-
-
-        res.render('workout-page', { exercises: exercisesToShow });
+        res.status(200).send({ "userWorkouts": activeWorkouts });
     } catch (error) {
         console.error('Error retrieving exercises', error);
         res.status(500).render('error-page');
     }
 });
+
 
 
 

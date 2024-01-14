@@ -58,8 +58,6 @@ function createExerciseContainer(exercise) {
     return exerciseContainer
 }
 
-
-
 function createWorkout() {
     // console.log('exercise', exercise[0]._id)
 
@@ -67,11 +65,15 @@ function createWorkout() {
 
     let exerciseList = [];
 
+    let workoutId = Math.floor(Math.random() * Math.pow(2, 30));
+    console.log('workoutId', workoutId)
+
     Array.from(elements).forEach(element => {
 
         let paragraph = element.querySelector("p");
         let id = paragraph.id;
         let sets = element.querySelector('input[type="number"]');
+
         // console.log('element', element)
 
         if (sets && sets.value) {
@@ -81,16 +83,18 @@ function createWorkout() {
             // let muscle = element.querySelector('span').innerText;
 
             exerciseList.push({
+                "workoutId": workoutId,
                 "userId": "659eac250754d960fdf04831",
                 "exerciseId": id,
                 "sets": sets.value,
+                "status": "active"
             });
 
-            console.log('exerciseList', exerciseList)
-            window.location.href = "../trackWorkout/trackWorkout.html"
+            console.log('exerciseList', exerciseList);
+            // window.location.href = "../trackWorkout/trackWorkout.html";
         }
     });
-    console.log('CCCCCCCC', exerciseList)
+
     const requestOptions = {
         method: 'POST',
         headers: {
@@ -100,7 +104,7 @@ function createWorkout() {
         body: JSON.stringify(exerciseList),
     };
 
-    fetch("https://fitness-tracker.byte-jumper.de:3000/api/workout/659eac250754d960fdf04831", requestOptions)
+    fetch("http://127.0.0.1:3000/api/userworkout/659fbd2b7290ab53c0b5ca38", requestOptions)
         .then(response => {
             // Check if the response status is OK (200-299)
             if (!response.ok) {
@@ -113,7 +117,7 @@ function createWorkout() {
         .then(data => {
             // Handle the response data
             console.log('POST successful:', data);
-            // window.location.href = "http://127.0.0.1:5500/frontend/trackWorkout/trackWorkout.html?id=659eac250754d960fdf04831"
+            window.location.href = "http://127.0.0.1:5500/frontend/trackWorkout/trackWorkout.html?id=659fbd2b7290ab53c0b5ca38"
         })
         .catch(error => {
             // Handle errors
@@ -132,13 +136,11 @@ function displayData(data) {
     const submitButton = document.createElement("button");
     submitButton.type = "submit";
     submitButton.innerHTML = "save";
-    submitButton.classList.add("btn", "btn-primary")
-    submitButton.style = "width: 100%; margin: 1em auto"
+    submitButton.classList.add('submit-button');
     submitButton.addEventListener('click', createWorkout);
     submitButtonContainer.appendChild(submitButton);
 
     data.forEach(exercise => {
-
 
         if (exercise.type == "Bodyweight") {
 

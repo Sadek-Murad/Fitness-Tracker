@@ -13,10 +13,13 @@ width: 800px;
 height: 800px;
 margin: 0 auto;
 margin-top: 80px;
-filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.376));
 }
 
-
+ul {
+  width: 100% !important;
+  left: 0;
+  transform: none;
+}
 
 h1 {
   font-size: 45px;
@@ -78,11 +81,11 @@ li a.active {
   width: 500px;
   height: 800px;
   background-color:#ffffffa1;
-  top: 50%;
+  top: 8%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
   border-radius: 25px;
-  outline: 1px solid rgba(12, 12, 12, 0.386);
+  outline: 1px solid rgba(12, 12, 12, 0.386)
 }
 
 .login-container h1 {
@@ -156,7 +159,7 @@ button:hover {
 
 
 .footer {
-  background-color: #e6ebec;
+  background-color: #d1d1d1;
   padding: 20px 0;
   max-width: 1500px;
   max-height: 1600px;
