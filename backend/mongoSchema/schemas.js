@@ -42,6 +42,13 @@ const exercisesSchema = new mongoose.Schema({
 
 const Exercise = mongoose.model('Exercise', exercisesSchema);
 
+const savedWorkoutSchema = new mongoose.Schema({
+    userId: String,
+    weights: [],
+    reps: []
+})
+
+const SavedWorkout = mongoose.model('SavedWorkout', savedWorkoutSchema);
 
 const statisticSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'RegisterUser' },
@@ -57,7 +64,7 @@ const statisticSchema = new mongoose.Schema({
 const Statistic = mongoose.model('Statistic', statisticSchema);
 
 
-module.exports = { IndividualWorkout, RegisterUser, Exercise, Statistic };
+module.exports = { IndividualWorkout, RegisterUser, Exercise, SavedWorkout, Statistic };
 
 /* const userProfileSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'RegisterUser' },

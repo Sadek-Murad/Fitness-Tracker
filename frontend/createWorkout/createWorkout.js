@@ -1,3 +1,8 @@
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const userId = urlParams.get('id');
+console.log('userId', userId)
+
 fetch('http://localhost:3000/api/exercises')
     .then(response => {
         if (!response.ok) {
@@ -84,7 +89,7 @@ function createWorkout() {
 
             exerciseList.push({
                 "workoutId": workoutId,
-                "userId": "659eac250754d960fdf04831",
+                "userId": userId,
                 "exerciseId": id,
                 "sets": sets.value,
                 "status": "active"
@@ -104,7 +109,7 @@ function createWorkout() {
         body: JSON.stringify(exerciseList),
     };
 
-    fetch("http://127.0.0.1:3000/api/userworkout/659fbd2b7290ab53c0b5ca38", requestOptions)
+    fetch("http://127.0.0.1:3000/api/userworkout/" + userId, requestOptions)
         .then(response => {
             // Check if the response status is OK (200-299)
             if (!response.ok) {
@@ -117,7 +122,7 @@ function createWorkout() {
         .then(data => {
             // Handle the response data
             console.log('POST successful:', data);
-            window.location.href = "http://127.0.0.1:5500/frontend/trackWorkout/trackWorkout.html?id=659fbd2b7290ab53c0b5ca38"
+            window.location.href = "http://127.0.0.1:5500/frontend/trackWorkout/trackWorkout.html?id=65a3c35aecbcc092aac041cc"
         })
         .catch(error => {
             // Handle errors

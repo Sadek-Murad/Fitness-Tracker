@@ -3,6 +3,14 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const id = urlParams.get('id');
 
+const create = document.getElementById('create')
+create.addEventListener('click', (e) => {
+  e.preventDefault();
+  console.log('id', id)
+  window.location.href = "/frontend/createWorkout/createWorkout.html?id=" + id;
+})
+
+
 fetch("http://localhost:3000/api/profile/" + id)
   .then(res => {
     if (res.ok) {
@@ -62,7 +70,7 @@ function save() {
     bmi: document.getElementById('bmi').value
   };
 
-  fetch('http://localhost:3000/api/profile/6596921b8cb903d3edf57f1c', {
+  fetch('http://localhost:3000/api/profile/' + id, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
@@ -84,36 +92,36 @@ function save() {
 
 // lougout
 
-document.addEventListener('DOMContentLoaded', () => {
+/* document.addEventListener('DOMContentLoaded', () => {
   const logoutButton = document.getElementById('logoutButton');
 
   if (logoutButton) {
-      logoutButton.addEventListener('click', async () => {
-          try {
-              const response = await fetch('/logout', {
-                  method: 'GET',
-              });
+    logoutButton.addEventListener('click', async () => {
+      try {
+        const response = await fetch('/logout', {
+          method: 'GET',
+        });
 
-              if (response.ok) {
-                  window.location.href = '/home'; // Weiterleitung nach dem Logout
-              } else {
-                  console.error('Logout fehlgeschlagen.');
-                  // Behandle den Fehler, wenn der Logout fehlschlägt
-              }
-          } catch (error) {
-              console.error('Fehler beim Logout:', error);
-              // Handle andere Fehler, die beim Logout auftreten könnten
-          }
-      });
+        if (response.ok) {
+          window.location.href = '/home'; // Weiterleitung nach dem Logout
+        } else {
+          console.error('Logout fehlgeschlagen.');
+          // Behandle den Fehler, wenn der Logout fehlschlägt
+        }
+      } catch (error) {
+        console.error('Fehler beim Logout:', error);
+        // Handle andere Fehler, die beim Logout auftreten könnten
+      }
+    });
   } else {
-      console.error('Das Element logoutButton wurde nicht gefunden.');
+    console.error('Das Element logoutButton wurde nicht gefunden.');
   }
-});
+}); */
 
 
 // logout
 
-const logoutButton = document.getElementById('logoutButton');
+/* const logoutButton = document.getElementById('logoutButton');
 
 logoutButton.addEventListener('click', async () => {
   try {
@@ -125,10 +133,10 @@ logoutButton.addEventListener('click', async () => {
       window.location.href = '/'
     } else {
       console.error('Logout fehlgeschlagen.');
-    
+
     }
   } catch (error) {
     console.error('Fehler beim Logout:', error);
-    
+
   }
-});
+}); */
