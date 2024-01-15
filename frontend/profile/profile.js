@@ -159,3 +159,54 @@ logoutButton.addEventListener('click', async () => {
     
   }
 });
+
+// lougout
+
+/* document.addEventListener('DOMContentLoaded', () => {
+  const logoutButton = document.getElementById('logoutButton');
+
+  if (logoutButton) {
+    logoutButton.addEventListener('click', async () => {
+      try {
+        const response = await fetch('/logout', {
+          method: 'GET',
+        });
+
+        if (response.ok) {
+          window.location.href = '/home'; // Weiterleitung nach dem Logout
+        } else {
+          console.error('Logout fehlgeschlagen.');
+          // Behandle den Fehler, wenn der Logout fehlschlägt
+        }
+      } catch (error) {
+        console.error('Fehler beim Logout:', error);
+        // Handle andere Fehler, die beim Logout auftreten könnten
+      }
+    });
+  } else {
+    console.error('Das Element logoutButton wurde nicht gefunden.');
+  }
+}); */
+
+
+// logout
+
+/* const logoutButton = document.getElementById('logoutButton');
+
+logoutButton.addEventListener('click', async () => {
+  try {
+    const response = await fetch("http://localhost:3000/api/logout", {
+      method: 'GET',
+    });
+
+    if (response.ok) {
+      window.location.href = '/'
+    } else {
+      console.error('Logout fehlgeschlagen.');
+
+    }
+  } catch (error) {
+    console.error('Fehler beim Logout:', error);
+
+  }
+}); */
