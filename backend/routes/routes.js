@@ -18,9 +18,9 @@ router.get('/auth/google/callback',
     async (req, res) => {
         try {
             if (req.user.isNewUser) {
-                res.redirect('https://fitness-frontend-origin.s3.eu-central-1.amazonaws.com/additional-info/additional-info.html?id=' + req.user._id);
+                res.redirect('https://fitnesstracker.byte-jumper.de/additional-info/additional-info.html?id=' + req.user._id);
             } else {
-                res.redirect('https://fitness-frontend-origin.s3.eu-central-1.amazonaws.com/profile/profile.html?id=' + req.user._id);
+                res.redirect('https://fitnesstracker.byte-jumper.de/profile/profile.html?id=' + req.user._id);
             }
         } catch (error) {
             console.error('Error in authentication process:', error);
@@ -39,7 +39,7 @@ router.post('/additional-info', async (req, res) => {
             isNewUser: false
         }, { new: true });
         // res.status(200).send({ "id": req.body.id });
-        res.redirect(301, `https://fitness-frontend-origin.s3.eu-central-1.amazonaws.com/profile/profile.htmlq?id=${req.body.id}`);
+        res.redirect(301, `https://fitnesstracker.byte-jumper.de/profile/profile.html?id=${req.body.id}`);
     } catch (error) {
         console.error('Error updating user information:', error);
         res.status(500).send('Server Error');

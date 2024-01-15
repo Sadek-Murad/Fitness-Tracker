@@ -8,7 +8,7 @@ console.log('XXXXX', userId)
 
 // Assuming userId is defined elsewhere in your code
 
-fetch('http://127.0.0.1:3000/api/workout/' + userId)
+fetch('https://fitness-tracker.byte-jumpder.de:3000/api/workout/' + userId)
     .then(response => {
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
